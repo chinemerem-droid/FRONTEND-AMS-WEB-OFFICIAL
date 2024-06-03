@@ -1,24 +1,30 @@
-import logo from './logo.svg';
-import './App.css';
+import React from 'react';
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+import LoginPage from './Amsweb/pages/LoginPage/LoginPage';
+import Managepeople from './Amsweb/pages/ManagePeoplePage/managepeople';
+import History from './Amsweb/pages/History/history';
+import Notification from './Amsweb/pages/NotificationPage/notification';
+import Layout from './Components/Layout';
+import HomePage from './Amsweb/pages/HomePage/HomePage';
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <>
+      <Router>
+        {/* <Sidebar> */}
+        <Routes>
+          <Route path="/" element={<LoginPage />} />
+          <Route path="" element={<Layout />}>
+            <Route path='/home' element={<HomePage />} />
+            <Route path="/notification" element={<Notification />} />
+            <Route path="/managepeople" element={<Managepeople />} />
+            <Route path="/history" element={<History />} />
+          </Route>
+        </Routes>
+        {/* </Sidebar> */}
+      </Router>
+    </>
+
   );
 }
 
