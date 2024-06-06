@@ -36,7 +36,7 @@ const Notification = () => {
 								></td>
 								<td
 									className="sen1"
-									dangerouslySetInnerHTML={{ __html: Approve.sen1 }}     
+									dangerouslySetInnerHTML={{ __html: Approve.sen1 }}
 								></td>
 								<td className="sen2">{Approve.sen2}</td>
 								<td className="sen3">
@@ -53,19 +53,33 @@ const Notification = () => {
 				{showApprove && (
 					<div className="darkBG">
 						<div className="centered">
-							<div className="modal">
-								<h6>Password Required</h6>
-								<p>
-									Your Administrator password is required to complete Approval
-									process
-								</p>
-								<img src={userIcon} alt="" /> <h6> John Doe</h6>
-								<span>Super Administration</span>
-								<div className="e-inputs">
-									<div className="imgeDiv">
-										<img src={FrameIcon} alt="" className="iconforreset" />
+							<div className="modal notification">
+								<div className="passreset">
+									<h6>Password Required</h6>
+									<p>
+										Your Administrator password is required to complete Approval
+										process
+									</p>
+								</div>
+								<div className="sub-card">
+								<div className="profile">
+									<div className="userp">
+									<img src={userIcon} alt="" width="14px" height="14px" /> 
+									<h6> John Doe</h6>
 									</div>
-									<div className="inpuDiv">
+									<div className="userpro">
+
+									</div>
+									<div className="usertitle">
+									<span>Super Administration</span>
+									</div>
+								</div>
+									
+								<div className="e-inputs">
+									<div className="imgoDiv">
+										<img src={FrameIcon} alt="" className="iconforpass" />
+									</div>
+									<div className="inpoDiv">
 										<input
 											type={showPassword ? "tel" : "password"}
 											placeholder="Old Password"
@@ -84,6 +98,11 @@ const Notification = () => {
 											/>
 										)}
 									</div>
+								</div>
+								</div>
+								<div className="buts">
+								<button className="proceed">proceed</button>
+								<button className="cancel">cancel</button>
 								</div>
 							</div>
 						</div>

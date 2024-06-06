@@ -13,8 +13,8 @@
 }
 .searchbar {
 	border-radius: 5px;
-	 width: 70px; 
-	 flex-direction: column; 
+	width: 70px;
+	flex-direction: column;
 	border: 1px solid #f0f0f0ed;
 	align-items: center;
 	display: flex;
@@ -29,7 +29,7 @@
 	margin-left: 70px;
 	display: flex;
 }
-table{
+table {
 	font-size: 11px;
 	font-weight: 300;
 }
@@ -42,24 +42,22 @@ td {
 tr:nth-child(even) {
 	background-color: #3457820d;
 }
-.sen3 button{
+.sen3 button {
 	width: 100%;
 	background: #345782;
 	border: none;
 	color: white;
 	padding: 8px 25px;
 	border-radius: 10px;
-	
 }
-.sen4 button{
+.sen4 button {
 	border: none;
 	background: transparent;
 	color: red;
 }
-.modal h6{
+.modal h6 {
 	font-weight: 500;
 	font-size: 16.29px;
-
 }
 .e-inputs {
 	display: flex;
@@ -68,11 +66,9 @@ tr:nth-child(even) {
 	width: 297px;
 	padding: 4px 10px;
 	gap: 10px;
-	margin-left: 6em;
-	margin-top: 2em;
 	border-radius: 10px;
-
-}.e-inputs .imgeDiv {
+}
+.e-inputs .imgeDiv {
 	width: 14%;
 	border-right: 1px solid #ccc;
 }
@@ -86,10 +82,86 @@ tr:nth-child(even) {
 	padding: 10px 15px;
 	width: 100%;
 	font-size: 18px;
-}.hidddePassword {
+}
+.hidddePassword {
 	position: absolute;
 	color: #ccc;
 }
-/* .iconforreset{
-	
-} */
+.passreset {
+	text-align: center;
+}
+.modal notification {
+	padding: 64px 135px;
+	display: flex;
+	flex-direction: column;
+	gap: 10px;
+	justify-content: center;
+	align-items: center;
+}
+.passreset h6 {
+	font-size: 16px;
+	font-weight: 500;
+	/* padding-top: 10px; */
+	margin-bottom: 20px;
+}
+.passreset p {
+	font-size: 10px;
+	font-weight: 400;
+	margin-bottom: 40px;
+}
+.profile {
+	display: flex;
+	gap: 10px;
+	border: 1px solid red;
+	width: fit-content;
+}
+.userp {
+	font-size: 10px;
+	display: flex;
+}
+.userpro {
+	border-right: 1px solid grey;
+}
+
+.usertitle {
+	font-size: 8px;
+}
+.buts {
+	display: flex;
+	gap: 60px;
+}
+.proceed {
+	padding: 10px 50px;
+	background-color: #345782;
+	color: white;
+	border: none;
+	border-radius: 8px;
+}
+.cancel {
+	border: none;
+	background: none;
+	color: #9f0000;
+}
+.inpoDiv {
+	width: 60%;
+	position: relative;
+	height: 1vh;
+}
+.inpoDiv input {
+	border: none;
+	outline: none;
+}
+.sub-card {
+	display: flex;
+	flex-direction: column;
+	border: 1px solid blue;
+	gap: 0.5em;
+	padding-left: auto;
+	padding-right: auto;
+}
+
+.usertitle {
+	border: 1px solid yellow;
+	margin-top: auto;
+	margin-bottom: auto;
+}
