@@ -1,0 +1,41 @@
+.scroll-container {
+  display: flex;
+  overflow-x: auto;
+  white-space: nowrap;
+  padding: 1em;
+  width: 100%;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1),
+}
+
+.scroll-item-container {
+  flex: 0 0 auto;
+  margin-right: 10px;
+  padding: 20px;
+  background-color: #fff;
+  border-radius: 5px;
+  border: none;
+  min-width: 200px; /* Adjust the width as needed */
+  display: flex;
+  gap: 1em;
+}
+
+.scroll-child-1 {
+  border: 1px solid var(--clr-secondary);
+}
+
+.scroll-child-2 {
+  display: flex;
+  flex-direction: column;
+  gap: 0.3em;
+}
+
+.scroll-child-2 h1 {
+  font-size: 23.03px;
+  font-weight: 500;
+  color: var(--clr-primary);
+}
+
+.scroll-child-2 h2 {
+  font-size: 15.35px;
+  font-weight: 400;
+}
