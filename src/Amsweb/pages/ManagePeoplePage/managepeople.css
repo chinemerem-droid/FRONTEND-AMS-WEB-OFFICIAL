@@ -1,0 +1,98 @@
+.manage-people-container {
+    padding: 3em;
+  }
+  
+  .manage-people-header h1 {
+    font-size: 21.7px;
+    font-weight: 400;
+    margin-bottom: 1em;
+  }
+  
+  .scroll-child {
+    display: flex;
+    border-radius: 15px;
+    margin-bottom: 2em;
+  }
+  
+  .scroll-child h2 {
+    font-weight: 500;
+    font-size: 23.03px;
+    color: var(--clr-primary);
+  }
+  
+  .scroll-child h3 {
+    font-weight: 400;
+    font-size: 15.35px;
+  }
+  
+  .info-and-search {
+    background-color: var(--clr-third);
+    border-radius: 10px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 5em;
+    padding: 1em;
+  }
+  
+  .info-and-search-content {
+    width: 30%;
+  }
+  
+  .info-and-search-content h2 {
+    font-size: 21px;
+    line-height: 24.61px;
+    font-weight: 400;
+  }
+  
+  .info-and-search-content2 {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 70%;
+  }
+  
+  .info-and-search-searchbar {
+    border-radius: 5px;
+    border: 1px solid #f0f0f0ed;
+    align-items: center;
+    display: flex;
+    background-color: white;
+    width: 80%;
+    padding-left: 1em;
+    padding-right: 1em;
+    height: 30px;
+  }
+  
+  #search-icon {
+    margin-left: 70px;
+    display: flex;
+  }
+  
+  .input {
+    background-color: transparent;
+    border: none;
+    height: 100%;
+    font-size: 1rem;
+    width: 100%;
+    margin-left: 5px;
+  }
+  
+  .input:focus {
+    outline: none;
+  }
+  
+  .add-user-button {
+    padding: 1em 2em;
+    border: none;
+    background-color: var(--clr-primary);
+    color: var(--clr-third);
+    border-radius: 5px;
+    font-size: 0.7rem;
+    transition: background-color 0.3s;
+  }
+  
+  .add-user-button:hover {
+    background-color:  var(--clr-primary-hover);
+  }
+  
