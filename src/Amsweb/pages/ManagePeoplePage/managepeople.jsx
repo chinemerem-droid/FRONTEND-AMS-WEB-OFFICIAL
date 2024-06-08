@@ -1,12 +1,13 @@
-import React, { useState } from "react";
+import React, { useState, useContext } from "react";
+import { RoleContext } from '../../../RoleContext'; // Correct import path
 import "./managepeople.css";
 import HorizontalScroll from "../../components/HorizontalScroll/HorizontalScroll";
 import { CiSearch } from "react-icons/ci";
 import AddNewUser from "../AddNewUser/addNewUser";
 import { ToastContainer } from "react-toastify";
-// import menuDot from "../images/menu-dots";
 
 function Managepeople() {
+  const { roleID } = useContext(RoleContext);
   const [addNewUserPage, setAddNewUserPage] = useState(1);
 
   const handleClick = () => {
@@ -23,6 +24,13 @@ function Managepeople() {
     "hyy",
     "hyy",
   ];
+
+  let buttonText;
+  if (roleID === "A1") {
+    buttonText = "Add User";
+  } else {
+    buttonText = "Request Approval";
+  }
 
   return (
     <>
@@ -47,7 +55,7 @@ function Managepeople() {
                 </form>
                 <div>
                   <button className="add-user-button" onClick={handleClick}>
-                    Add new User
+                    {buttonText}
                   </button>
                 </div>
               </div>
@@ -55,7 +63,7 @@ function Managepeople() {
           </>
         )}
 
-        {addNewUserPage && addNewUserPage == 2 && (
+        {addNewUserPage && addNewUserPage === 2 && (
           <>
             <AddNewUser />
           </>

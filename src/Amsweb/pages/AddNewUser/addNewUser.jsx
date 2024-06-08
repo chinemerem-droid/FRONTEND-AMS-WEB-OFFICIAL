@@ -1,15 +1,24 @@
-import React from "react";
+import React , { useState, useContext } from "react";
 import "./addNewUser.css";
 import { toast } from "react-toastify";
+import { RoleContext } from '../../../RoleContext';
 
 function AddNewUser() {
   const notify = () => toast("New User Added");
+  const { roleID } = useContext(RoleContext);
+
+ let buttonText;
+  if (roleID === "A1") {
+    buttonText = "Add New User";
+  } else {
+    buttonText = "Request Approval For New User";
+  }
 
   return (
     <div className="table-container-2">
       <div>
         <div className="header-text">
-          <h1>Add new user</h1>
+          <h1>{buttonText}</h1>
           <h2>please fill out the form with the users' details</h2>
         </div>
       </div>
@@ -76,7 +85,7 @@ function AddNewUser() {
           </label>
         </div>
         <button className="add-user-btn" onClick={notify}>
-          <h1>Request Approval</h1>
+        {buttonText}
         </button>
       </div>
     </div>
