@@ -52,8 +52,26 @@ function Managepeople() {
             <header className="manage-people-header">
               <h1>Administrators</h1>
             </header>
-            <div className="scroll-child horizontal-scroll">
+            {/* <div className="scroll-child horizontal-scroll">
               <HorizontalScroll items={filteredContacts.map((contact) => contact.Name)} /> 
+            </div> */}
+            <div className="scroll-child horizontal-scroll">
+              <div className="scroll-container">
+                {filteredContacts.map((contact) => (
+                  <div key={contact.id || Math.random()} className="scroll-item-container">
+                    <span>{contact.staffID}</span>
+                    <div className="scroll-child-1">
+                      <img src="#" alt="" /> {/* Placeholder for image */}
+                    </div>
+                    <div className="scroll-child-2">
+                      <h1>{contact.Name}</h1> {/* Assuming you want to repeat the name in h1 */}
+                      <h2>
+                        {contact.Lab_role === "A1" ? "SuperAdmin" : contact.Lab_role === "B2" ? "SubAdmin" : contact.Lab_role}
+                      </h2>
+                    </div>
+                  </div>
+                ))}
+              </div>
             </div>
             <div className="info-and-search">
               <div className="info-and-search-content">
