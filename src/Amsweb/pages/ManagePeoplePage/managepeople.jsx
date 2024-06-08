@@ -4,6 +4,7 @@ import HorizontalScroll from "../../components/HorizontalScroll/HorizontalScroll
 import { CiSearch } from "react-icons/ci";
 import AddNewUser from "../AddNewUser/addNewUser";
 import { ToastContainer } from "react-toastify";
+import ScrollChild from '../../../ScrollChild'; 
 
 function Managepeople() {
   const [contacts, setContacts] = useState([]);
@@ -28,17 +29,7 @@ function Managepeople() {
       })
       .catch((error) => console.error("Error fetching data: ", error));
   }, []);
-
-  const items = [
-    "Item 1",
-    "Item 2",
-    "Item 3",
-    "Item 4",
-    "Item 5",
-    "hyy",
-    "hyy",
-    "hyy",
-  ];
+ 
 
   const filteredContacts = contacts.filter(
     (contact) =>
@@ -54,8 +45,8 @@ function Managepeople() {
             <header className="manage-people-header">
               <h1>Administrators</h1>
             </header>
-            <div className="scroll-child">
-              <HorizontalScroll items={items} />
+            <div className="scroll-child horizontal-scroll"> {/* Added 'horizontal-scroll' class */}
+              <HorizontalScroll items={filteredContacts.map((contact) => contact.Name)} /> {/* Pass only names to HorizontalScroll */}
             </div>
             <div className="info-and-search">
               <div className="info-and-search-content">
@@ -79,12 +70,7 @@ function Managepeople() {
                 </div>
               </div>
             </div>
-          </>
-        )}
-
-        {addNewUserPage === 2 && <AddNewUser />}
-
-        <table>
+            <table>
           <thead>
             <tr className="tableHead">
               <th className="cell">Name</th>
@@ -105,7 +91,14 @@ function Managepeople() {
             ))}
           </tbody>
         </table>
+          </>
+        )}
+
+      
+
+       
       </div>
+      {addNewUserPage === 2 && <AddNewUser />}
     </>
   );
 }
