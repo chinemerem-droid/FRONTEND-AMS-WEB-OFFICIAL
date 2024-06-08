@@ -4,7 +4,7 @@ import HorizontalScroll from "../../components/HorizontalScroll/HorizontalScroll
 import { CiSearch } from "react-icons/ci";
 import AddNewUser from "../AddNewUser/addNewUser";
 import { ToastContainer } from "react-toastify";
-import ScrollChild from '../../../ScrollChild'; 
+
 
 function Managepeople() {
   const [contacts, setContacts] = useState([]);
@@ -33,7 +33,14 @@ function Managepeople() {
 
   const filteredContacts = contacts.filter(
     (contact) =>
-      contact.Name && contact.Name.toLowerCase().includes(searchTerm.toLowerCase())
+      contact.Name &&
+      contact.Name.toLowerCase().includes(searchTerm.toLowerCase()) &&
+      (contact.Lab_role === "A1" || contact.Lab_role === "B2")
+  );
+  const filterContacts = contacts.filter(
+    (contact) =>
+      contact.Name &&
+      contact.Name.toLowerCase().includes(searchTerm.toLowerCase())
   );
 
   return (
@@ -45,8 +52,8 @@ function Managepeople() {
             <header className="manage-people-header">
               <h1>Administrators</h1>
             </header>
-            <div className="scroll-child horizontal-scroll"> {/* Added 'horizontal-scroll' class */}
-              <HorizontalScroll items={filteredContacts.map((contact) => contact.Name)} /> {/* Pass only names to HorizontalScroll */}
+            <div className="scroll-child horizontal-scroll">
+              <HorizontalScroll items={filteredContacts.map((contact) => contact.Name)} /> 
             </div>
             <div className="info-and-search">
               <div className="info-and-search-content">
@@ -81,7 +88,7 @@ function Managepeople() {
           </thead>
 
           <tbody>
-            {filteredContacts.map((contact, index) => (
+            {filterContacts.map((contact, index) => (
               <tr key={index}>
                 <td className="cells-Name">{contact.Name}</td>
                 <td className="cells-staffID">{contact.staffID}</td>
