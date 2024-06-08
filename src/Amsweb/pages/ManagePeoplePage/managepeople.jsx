@@ -4,8 +4,15 @@ import HorizontalScroll from "../../components/HorizontalScroll/HorizontalScroll
 import { CiSearch } from "react-icons/ci";
 import AddNewUser from "../AddNewUser/addNewUser";
 import { ToastContainer } from "react-toastify";
+const randomImages = [ // Array of image URLs
+  "https://cdn-icons-png.flaticon.com/128/1507/1507155.png",
+  "https://cdn-icons-png.flaticon.com/128/2632/2632839.png",
+  "https://cdn-icons-png.flaticon.com/128/1507/1507187.png",
+  "https://cdn-icons-png.flaticon.com/128/1507/1507115.png",
+  "https://cdn-icons-png.flaticon.com/128/1507/1507168.png",
+];
 
-function UserPopup({ contact, onClose, onRemove, onUpdate }) {
+function UserPopup({ contact, onClose, onRemove}) {
   return (
     <div className="popup-overlay">
       <div className="popup">
@@ -89,9 +96,15 @@ function Managepeople() {
               <div className="scroll-container">
                 {filteredContacts.map((contact) => (
                   <div key={contact.id || Math.random()} className="scroll-item-container">
-                    <td className="cells-staffID">
-                      <span style={{ color: "green", fontWeight: "bold" }} className="center-text">{contact.staffID}</span>
-                    </td>
+                <td className="cells-staffID">
+                <div className="staff-id-container"> {/* Added container div */}
+                 <img  
+                 src={randomImages[Math.floor(Math.random() * randomImages.length)]}
+                  alt="Random icon"
+                 className="staff-id-icon"/>
+               <span style={{ color: "green", fontWeight: "bold" }}>{contact.staffID}</span>
+               </div>
+                 </td>
                     <div className="scroll-child-1">
                       <img src="#" alt="" /> {/* Placeholder for image */}
                     </div>
