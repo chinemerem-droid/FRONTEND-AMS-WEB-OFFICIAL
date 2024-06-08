@@ -1,5 +1,4 @@
-import React, { useState, useContext } from "react";
-import { RoleContext } from '../../../RoleContext'; // Correct import path
+import React, { useState, useEffect } from "react";
 import "./managepeople.css";
 import HorizontalScroll from "../../components/HorizontalScroll/HorizontalScroll";
 import { CiSearch } from "react-icons/ci";
@@ -7,12 +6,28 @@ import AddNewUser from "../AddNewUser/addNewUser";
 import { ToastContainer } from "react-toastify";
 
 function Managepeople() {
-  const { roleID } = useContext(RoleContext);
+  const [contacts, setContacts] = useState([]);
+  const [searchTerm, setSearchTerm] = useState("");
   const [addNewUserPage, setAddNewUserPage] = useState(1);
 
   const handleClick = () => {
     setAddNewUserPage(2);
   };
+
+  useEffect(() => {
+    fetch("https://attsystem-latest.onrender.com/api/User/AddedUsers")
+      .then((response) => response.json())
+      .then((data) => {
+        const formattedData = data.map((item) => ({
+          Name: item.name,
+          staffID: item.staff_ID,
+          Email: item.email,
+          Lab_role: item.lab_role,
+        }));
+        setContacts(formattedData);
+      })
+      .catch((error) => console.error("Error fetching data: ", error));
+  }, []);
 
   const items = [
     "Item 1",
@@ -25,18 +40,16 @@ function Managepeople() {
     "hyy",
   ];
 
-  let buttonText;
-  if (roleID === "A1") {
-    buttonText = "Add User";
-  } else {
-    buttonText = "Request Approval";
-  }
+  const filteredContacts = contacts.filter(
+    (contact) =>
+      contact.Name && contact.Name.toLowerCase().includes(searchTerm.toLowerCase())
+  );
 
   return (
     <>
       <ToastContainer />
       <div className="manage-people-container">
-        {addNewUserPage && addNewUserPage === 1 && (
+        {addNewUserPage === 1 && (
           <>
             <header className="manage-people-header">
               <h1>Administrators</h1>
@@ -50,12 +63,18 @@ function Managepeople() {
               </div>
               <div className="info-and-search-content2">
                 <form className="info-and-search-searchbar">
-                  <input type="text" className="input" placeholder=" search" />
+                  <input
+                    type="text"
+                    className="input"
+                    placeholder=" search"
+                    value={searchTerm}
+                    onChange={(e) => setSearchTerm(e.target.value)}
+                  />
                   <CiSearch id="search-icon" />
                 </form>
                 <div>
                   <button className="add-user-button" onClick={handleClick}>
-                    {buttonText}
+                    Add new User
                   </button>
                 </div>
               </div>
@@ -63,11 +82,29 @@ function Managepeople() {
           </>
         )}
 
-        {addNewUserPage && addNewUserPage === 2 && (
-          <>
-            <AddNewUser />
-          </>
-        )}
+        {addNewUserPage === 2 && <AddNewUser />}
+
+        <table>
+          <thead>
+            <tr className="tableHead">
+              <th className="cell">Name</th>
+              <th className="cell">Staff ID</th>
+              <th className="cell">Email</th>
+              <th className="cell">Admin</th>
+            </tr>
+          </thead>
+
+          <tbody>
+            {filteredContacts.map((contact, index) => (
+              <tr key={index}>
+                <td className="cells-Name">{contact.Name}</td>
+                <td className="cells-staffID">{contact.staffID}</td>
+                <td className="cells-CheckIn">{contact.Email}</td>
+                <td className="cells-CheckOut">{contact.Lab_role}</td>
+              </tr>
+            ))}
+          </tbody>
+        </table>
       </div>
     </>
   );
