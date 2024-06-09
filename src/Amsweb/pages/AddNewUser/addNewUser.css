@@ -103,3 +103,70 @@
   padding: 10px 10px 10px 40px; /* Adjust padding for icon */
   border-radius: 5px;
 }
+.popup-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.5);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.popup {
+  background: var(--clr-third);
+  padding: 2em;
+  border-radius: 10px;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+  text-align: center;
+}
+
+.popup h2 {
+  margin-bottom: 1em;
+  font-family: "Roboto", sans-serif;
+  color: var(--clr-primary);
+}
+
+.popup input {
+  width: 100%;
+  padding: 10px;
+  margin-bottom: 1em;
+  border: 1px solid var(--clr-secondary);
+  border-radius: 5px;
+}
+
+.butt1{
+  background: var(--clr-primary);
+  padding: 10px;
+  border: none;
+  border-radius: 5px;
+  margin-right: 20px;
+  color: var(--clr-third);
+  cursor: pointer;
+  transition: background 0.3s;
+}
+.butt2{
+  background: var(--clr-primary);
+  padding: 10px;
+  border: none;
+  border-radius: 5px;
+  margin-left: 20px;
+  color: var(--clr-third);
+  cursor: pointer;
+  transition: background 0.3s;
+}
+
+.popup button:hover {
+  background: var(--clr-primary-hover);
+}
+
+.popup .cancel-button {
+  background: var(--clr-secondary);
+  margin-left: 1em;
+}
+
+.popup .cancel-button:hover {
+  background: darken(var(--clr-secondary), 10%);
+}

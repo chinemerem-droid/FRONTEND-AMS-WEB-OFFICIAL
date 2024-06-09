@@ -187,8 +187,8 @@ function AddNewUser() {
               value={password}
               onChange={(e) => setPassword(e.target.value)}
             />
-            <button onClick={handlePasswordConfirmation}>Confirm</button>
-            <button onClick={() => setShowPasswordPopup(false)}>Cancel</button>
+            <button onClick={handlePasswordConfirmation} className="butt1">Confirm</button>
+            <button onClick={() => setShowPasswordPopup(false)} className="butt2">Cancel</button>
           </div>
         </div>
       )}
