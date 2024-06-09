@@ -2,6 +2,7 @@ import React, { useState, useContext } from "react";
 import "./addNewUser.css";
 import { toast } from "react-toastify";
 import { RoleContext } from '../../../RoleContext';
+import { FaUserAlt, FaEnvelope, FaPhone, FaIdCard } from "react-icons/fa";
 
 function AddNewUser() {
   const notifySuccess = (message) => toast.success(message);
@@ -109,7 +110,7 @@ function AddNewUser() {
         <div className="row-3">
           <div className="inputs">
             <div className="image-div">
-              <img src="" alt="" className="iconforlogin" />
+              <FaUserAlt className="input-icon" />
             </div>
             <div className="input-div">
               <input
@@ -122,7 +123,7 @@ function AddNewUser() {
           </div>
           <div className="inputs">
             <div className="image-div">
-              <img src="" alt="" className="iconforlogin" />
+              <FaEnvelope className="input-icon" />
             </div>
             <div className="input-div">
               <input
@@ -136,7 +137,7 @@ function AddNewUser() {
         </div>
         <div className="inputs">
           <div className="image-div">
-            <img src="" alt="" className="iconforlogin" />
+            <FaPhone className="input-icon" />
           </div>
           <div className="input-div">
             <input
@@ -149,7 +150,7 @@ function AddNewUser() {
         </div>
         <div className="inputs">
           <div className="image-div">
-            <img src="" alt="" className="iconforlogin" />
+            <FaIdCard className="input-icon" />
           </div>
           <div className="input-div">
             <input

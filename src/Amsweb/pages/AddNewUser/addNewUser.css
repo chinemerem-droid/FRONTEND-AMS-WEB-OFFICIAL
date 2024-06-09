@@ -72,3 +72,34 @@
   font-size: 1rem;
   
 }
+.image-div {
+  margin-right: 10px;
+  margin-left: 20px;
+}
+.input-icon {
+  position: relative;
+  left: 10px;
+  top: 50%;
+
+}
+.inputs {
+  display: flex;
+  align-items: center;
+  margin-bottom: 1em;
+  width: 100%;
+}
+
+.image-div {
+  margin-right: 10px;
+}
+
+.input-div {
+  position: absolute;
+  width: 100%;
+}
+
+.input-div input {
+  width: 100%;
+  padding: 10px 10px 10px 40px; /* Adjust padding for icon */
+  border-radius: 5px;
+}
