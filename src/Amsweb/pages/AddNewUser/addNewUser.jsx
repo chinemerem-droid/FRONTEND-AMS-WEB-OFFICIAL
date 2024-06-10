@@ -56,24 +56,28 @@ function AddNewUser() {
               if (status === 200) {
                 notifySuccess("User added successfully");
   
-                fetch("https://attsystem-latest.onrender.com/api/User/Approve", {
-                  method: "POST",
-                  headers: {
-                    "Content-Type": "application/json",
-                  },
-                  body: JSON.stringify({ Staff_ID: newUser.staff_ID }),
-                })
-                  .then(response => response.text().then(text => ({ status: response.status, text })))
-                  .then(({ status, text }) => {
-                    if (status === 200) {
-                      notifySuccess("User approved successfully");
-                    } else {
-                      notifyError("Failed to approve user: " + text);
-                    }
+                if (roleID === "A1") {
+                  fetch("https://attsystem-latest.onrender.com/api/User/Approve", {
+                    method: "POST",
+                    headers: {
+                      "Content-Type": "application/json",
+                    },
+                    body: JSON.stringify({ Staff_ID: newUser.staff_ID }),
                   })
-                  .catch(error => {
-                    notifyError("Failed to approve user: " + error.message);
-                  });
+                    .then(response => response.text().then(text => ({ status: response.status, text })))
+                    .then(({ status, text }) => {
+                      if (status === 200) {
+                        notifySuccess("User approved successfully");
+                      } else {
+                        notifyError("Failed to approve user: " + text);
+                      }
+                    })
+                    .catch(error => {
+                      notifyError("Failed to approve user: " + error.message);
+                    });
+                } else if (roleID === "B2") {
+                  notifySuccess("Request sent");
+                }
               } else {
                 notifyError("Failed to add user: " + text);
               }
