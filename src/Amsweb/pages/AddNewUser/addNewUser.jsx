@@ -31,12 +31,11 @@ function AddNewUser() {
       headers: {
         "Content-Type": "application/json",
       },
-      
       body: JSON.stringify({ password, Staff_ID: nameID }),
     })
-      .then(response => response.json())
-      .then(data => {
-        if (data.success) {
+      .then(response => response.text())
+      .then(text => {
+        if (text === "Password confirmed successfully.") {
           const newUser = {
             name: username,
             email: email,
@@ -44,7 +43,7 @@ function AddNewUser() {
             staff_ID: staffID,
             lab_role: labRole,
           };
-
+  
           fetch("https://attsystem-latest.onrender.com/api/User/AddUser", {
             method: "POST",
             headers: {
@@ -52,22 +51,52 @@ function AddNewUser() {
             },
             body: JSON.stringify(newUser),
           })
-            .then(response => response.json())
-            .then(data => {
-              if (data.message === "User added successfully") {
+            .then(response => response.text().then(text => ({ status: response.status, text })))
+            .then(({ status, text }) => {
+              if (status === 200) {
                 notifySuccess("User added successfully");
+  
+                fetch("https://attsystem-latest.onrender.com/api/User/Approve", {
+                  method: "POST",
+                  headers: {
+                    "Content-Type": "application/json",
+                  },
+                  body: JSON.stringify({ Staff_ID: newUser.staff_ID }),
+                })
+                  .then(response => response.text().then(text => ({ status: response.status, text })))
+                  .then(({ status, text }) => {
+                    if (status === 200) {
+                      notifySuccess("User approved successfully");
+                    } else {
+                      notifyError("Failed to approve user: " + text);
+                    }
+                  })
+                  .catch(error => {
+                    notifyError("Failed to approve user: " + error.message);
+                  });
               } else {
-                notifyError("Failed to add user");
+                notifyError("Failed to add user: " + text);
               }
               setShowPasswordPopup(false);
             })
-            .catch(error => notifyError("Failed to add user"));
+            .catch(error => {
+              notifyError("Failed to add user: " + error.message);
+              setShowPasswordPopup(false);
+            });
         } else {
-          notifyError("Password confirmation failed");
+          notifyError("Password confirmation failed: " + text);
         }
       })
-      .catch(error => notifyError("Password confirmation failed"));
+      .catch(error => {
+        notifyError("Password confirmation failed: " + error.message);
+        setShowPasswordPopup(false);
+      });
   };
+  
+
+  
+  
+  
 
   let buttonText;
   if (roleID === "A1") {
