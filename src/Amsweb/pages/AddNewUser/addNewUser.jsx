@@ -63,7 +63,6 @@ function AddNewUser() {
             })
             .catch(error => notifyError("Failed to add user"));
         } else {
-          console.log(`Staff_ID: ${roleID}`);
           notifyError("Password confirmation failed");
         }
       })
