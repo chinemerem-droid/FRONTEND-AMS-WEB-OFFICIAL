@@ -10,7 +10,7 @@ import { RoleContext } from '../../../RoleContext'; // Correct import path
 
 function LoginPage() {
   const navigate = useNavigate();
-  const { setRoleID } = useContext(RoleContext); // Use context
+  const { setRoleID, setNameID } = useContext(RoleContext);
   const [showPassword, setShowPassword] = useState(false);
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
@@ -28,10 +28,12 @@ function LoginPage() {
       setToken(token);
       const decodedToken = jwtDecode(token);
       const roleID = decodedToken.LabRole;
+      const nameID = decodedToken.nameid;
       console.log('Decoded Token:', decodedToken);
       console.log('Role_ID:', roleID);
       setRoleID(roleID); 
-      toast.success(`Role_ID: ${roleID}`);
+      setNameID(nameID);
+      console.log(`Staff_ID: ${nameID}`);
       navigate('/home');
     } catch (error) {
       console.log(error);

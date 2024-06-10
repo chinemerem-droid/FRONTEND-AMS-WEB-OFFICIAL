@@ -7,8 +7,8 @@ import { FaUserAlt, FaEnvelope, FaPhone, FaIdCard } from "react-icons/fa";
 function AddNewUser() {
   const notifySuccess = (message) => toast.success(message);
   const notifyError = (message) => toast.error(message);
-  const { roleID } = useContext(RoleContext);
-
+  const { roleID, nameID } = useContext(RoleContext);
+ 
   const [username, setUsername] = useState("");
   const [email, setEmail] = useState("");
   const [phoneNumber, setPhoneNumber] = useState("");
@@ -22,73 +22,52 @@ function AddNewUser() {
   };
 
   const handleFormSubmit = () => {
-    const newUser = {
-      name: username,
-      email: email,
-      phone_number: phoneNumber, // Add phone number to the data
-      staff_ID: staffID,
-      lab_role: labRole,
-    };
-
-    fetch("https://attsystem-latest.onrender.com/api/User/AddUser", {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify(newUser),
-    })
-    .then(response => response.json())
-    .then(data => {
-      setShowPasswordPopup(true);
-    })
-    .catch(error => notifyError("Failed to add user"));
+    setShowPasswordPopup(true);
   };
-
+  
   const handlePasswordConfirmation = () => {
     fetch("https://attsystem-latest.onrender.com/api/User/Confirmpassword", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
       },
-      body: JSON.stringify({ password }),
+      
+      body: JSON.stringify({ password, Staff_ID: nameID }),
     })
-    .then(response => response.json())
-    .then(data => {
-      if (data.success) {
-        if (roleID === "A1") {
-          fetch("https://attsystem-latest.onrender.com/api/User/approve", {
+      .then(response => response.json())
+      .then(data => {
+        if (data.success) {
+          const newUser = {
+            name: username,
+            email: email,
+            phone_number: phoneNumber,
+            staff_ID: staffID,
+            lab_role: labRole,
+          };
+
+          fetch("https://attsystem-latest.onrender.com/api/User/AddUser", {
             method: "POST",
             headers: {
               "Content-Type": "application/json",
             },
-            body: JSON.stringify({ staff_ID: staffID }),
+            body: JSON.stringify(newUser),
           })
-          .then(response => response.json())
-          .then(data => {
-            notifySuccess("User added successfully");
-            setShowPasswordPopup(false);
-          })
-          .catch(error => notifyError("Failed to approve user"));
-        } else if (roleID === "B2") {
-          fetch("https://attsystem-latest.onrender.com/api/User/Notification", {
-            method: "POST",
-            headers: {
-              "Content-Type": "application/json",
-            },
-            body: JSON.stringify({ staff_ID: staffID }),
-          })
-          .then(response => response.json())
-          .then(data => {
-            notifySuccess("User request sent successfully");
-            setShowPasswordPopup(false);
-          })
-          .catch(error => notifyError("Failed to send notification"));
+            .then(response => response.json())
+            .then(data => {
+              if (data.message === "User added successfully") {
+                notifySuccess("User added successfully");
+              } else {
+                notifyError("Failed to add user");
+              }
+              setShowPasswordPopup(false);
+            })
+            .catch(error => notifyError("Failed to add user"));
+        } else {
+          console.log(`Staff_ID: ${roleID}`);
+          notifyError("Password confirmation failed");
         }
-      } else {
-        notifyError("Password confirmation failed");
-      }
-    })
-    .catch(error => notifyError("Password confirmation failed"));
+      })
+      .catch(error => notifyError("Password confirmation failed"));
   };
 
   let buttonText;
@@ -103,7 +82,7 @@ function AddNewUser() {
       <div>
         <div className="header-text">
           <h1>{buttonText}</h1>
-          <h2>please fill out the form with the users' details</h2>
+          <h2>Please fill out the form with the users' details</h2>
         </div>
       </div>
       <div className="text-form-field-container">
