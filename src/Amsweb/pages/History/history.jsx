@@ -18,6 +18,7 @@ import "./history.css";
 
 const History = () => {
   const [count, setCount] = useState(false);
+  const [search, setSearch] = useState("");
   const [showHistory, setShowHistory] = useState(true);
   const [showHistoryApproval, setShowHistoryApproval] = useState(false);
   const [responseData, setResponseData] = useState(null);
@@ -58,11 +59,32 @@ const History = () => {
     setSearchTerm(e.target.value);
   };
   const formatDate = (date) => {
-    const month = date.toLocaleString("en-US", { Month: "long" });
-    const day = date.getDate();
+    const months = [
+      "January",
+      "February",
+      "March",
+      "April",
+      "May",
+      "June",
+      "July",
+      "August",
+      "September",
+      "October",
+      "November",
+      "Decemeber",
+    ];
+    const extractedMonth = String(date).substring(5, 7);
+    const monthVal = Number(extractedMonth);
+    const month = months[monthVal - 1];
+    const day = String(date).substring(8, 10);
     return `${month} ${day}`;
   };
 
+  const filterbyDate = responseData && responseData.filter(
+    (res) => formatDate(res.date).toLowerCase().includes(search.toLowerCase())
+  );
+
+  console.log(filterbyDate);
   // const filteredContacts = contacts.filter((contact) =>
   // 	contact.Name.toLowerCase().includes(searchTerm.toLowerCase())
   //);
@@ -100,6 +122,8 @@ const History = () => {
                 type="text"
                 placeholder="Search..."
                 className="search-bar"
+                value={search}
+                onChange={(e) => setSearch(e.target.value)}
               />
               <div class="dropdown">
                 <button class="dropdown-button">
@@ -122,6 +146,9 @@ const History = () => {
                 type="text"
                 placeholder="Search..."
                 className="search-bar"
+                value={search}
+                onChange={(e) => setSearch(e.target.value)}
+
               />
               <div class="dropdown">
                 <button class="dropdown-button">
@@ -148,8 +175,8 @@ const History = () => {
           </tr>
         </thead>
         <tbody>
-          {responseData &&
-            responseData.map((res, index) => (
+          {filterbyDate &&
+            filterbyDate.map((res, index) => (
               <tr key={index}>
                 <td>{formatDate(res.date)}</td>
                 <td>{res.staff_ID}</td>

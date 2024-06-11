@@ -262,6 +262,7 @@ thead tr {
 th {
 	color: #8d8d8d;
 	font-weight: 700;
+	text-align: left;
 }
 .cells-Name {
 	color: #000000;
