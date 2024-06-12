@@ -15,6 +15,7 @@ import { TbLogout } from "react-icons/tb";
 // import dateIcon from "../images/date.svg";
 import { TbClockHour2 } from "react-icons/tb";
 import dayjs from "dayjs";
+import { FaTrash } from "react-icons/fa";
 import "./history.css";
 
 const History = () => {
@@ -111,12 +112,28 @@ const History = () => {
   );
 
   console.log(finalflowtrain);
-//   console.log(dayjs(d.date));
+  //   console.log(dayjs(d.date));
   console.log(dayjs("2024-05-20T00:00:00"));
-//   console.log(filterbyDate);
+  //   console.log(filterbyDate);
   // const filteredContacts = contacts.filter((contact) =>
   // 	contact.Name.toLowerCase().includes(searchTerm.toLowerCase())
   //);
+
+  const NotificationBar = ({ text, onDelete }) => {
+    return (
+      <div className="notification-bar">
+        <span>{text}</span>
+        <FaTrash className="delete-icon" onClick={onDelete} />
+      </div>
+    );
+  };
+
+  const App = () => {
+    const handleDelete = (message) => {
+      alert(`Delete icon clicked for: ${message}`);
+    };
+  };
+
   return (
     <>
       {/* <div className="table-container-history"> */}
@@ -171,6 +188,29 @@ const History = () => {
                 </div>
               </div>
             </div>
+            <table>
+              <thead>
+                <tr>
+                  <th>Day</th>
+                  <th>Name</th>
+                  <th>Staff ID</th>
+                  <th>Check in</th>
+                  <th>Check out</th>
+                </tr>
+              </thead>
+              <tbody>
+                {filterbyDate &&
+                  filterbyDate.map((res, index) => (
+                    <tr key={index}>
+                      <td>{formatDate(res.date)}</td>
+                      <td>{res.staff_ID}</td>
+                      <td>{res.staff_ID}</td>
+                      <td>{res.entryTime}</td>
+                      <td>{res.exitTime}</td>
+                    </tr>
+                  ))}
+              </tbody>
+            </table>
           </>
         )}
 
@@ -195,32 +235,28 @@ const History = () => {
                 </div>
               </div>
             </div>
+            <div className="notification-list">
+              <NotificationBar
+                text="You approved onboarding request of a new user John Doe"
+                onDelete={() =>
+                  handleDelete(
+                    "You approved onboarding request of a new user John Doe"
+                  )
+                }
+              />
+              <NotificationBar
+                text="You denied onboarding request of a new user John Doe"
+                onDelete={() =>
+                  handleDelete(
+                    "You denied onboarding request of a new user John Doe"
+                  )
+                }
+              />
+            </div>
           </>
         )}
       </div>
-      <table>
-        <thead>
-          <tr>
-            <th>Day</th>
-            <th>Name</th>
-            <th>Staff ID</th>
-            <th>Check in</th>
-            <th>Check out</th>
-          </tr>
-        </thead>
-        <tbody>
-          {filterbyDate &&
-            filterbyDate.map((res, index) => (
-              <tr key={index}>
-                <td>{formatDate(res.date)}</td>
-                <td>{res.staff_ID}</td>
-                <td>{res.staff_ID}</td>
-                <td>{res.entryTime}</td>
-                <td>{res.exitTime}</td>
-              </tr>
-            ))}
-        </tbody>
-      </table>
+
       {/* </div> */}
     </>
   );
