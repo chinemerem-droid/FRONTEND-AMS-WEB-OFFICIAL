@@ -12,9 +12,11 @@ import {
 } from "../../components/SvgIcons";
 import { useNavigate } from "react-router-dom";
 import * as imports from "../../components/SvgIcons";
+import Loader from "../../components/Loader";
 function LoginPage() {
 	const navigate = useNavigate();
 	const [showPassword, setShowPassword] = useState(false);
+	const [loading, setLoading] = useState(false);
 	const [username, setUsername] = useState("");
 	const [password, setPassword] = useState("");
 	const [message, setMessage] = useState("");
@@ -22,16 +24,21 @@ function LoginPage() {
 	
 
 	const submitCredentials = async () => {
+		setLoading(true)
 		try {
+			
 			const response = await axios.post('https://attsystem-latest.onrender.com/api/User/loginAdmin', {
 				Staff_ID: username,
 				Password: password
 			});
+			setLoading(false)
 			setMessage(response.data.message);
 			setToken(response.data.token);
+			sessionStorage.setItem("token", response.data.token)
 			navigate("/home")
 		}
 		catch (error) {
+			setLoading(false)
 			console.log(error);
 			toast.error(error.response.data)
 		}
@@ -84,10 +91,19 @@ function LoginPage() {
 							)}
 						</div>
 					</div>
+					{
+						loading ? (
+							<div className="button-con2">
+								<button disabled>Login <Loader /></button>
+							</div>
+						) : (
 
-					<div className="button-con">
-						<button onClick={submitCredentials}>Login</button>
-					</div>
+							<div className="button-con">
+								<button onClick={submitCredentials}>Login</button>
+							</div>
+						)
+					}
+						
 				</div>
 			</div>
 		</>

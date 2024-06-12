@@ -6,6 +6,7 @@ import History from './Amsweb/pages/History/history';
 import Notification from './Amsweb/pages/NotificationPage/notification';
 import Layout from './Components/Layout';
 import HomePage from './Amsweb/pages/HomePage/HomePage';
+import Sub from './Amsweb/pages/NotificationPage/sub';
 
 function App() {
   return (

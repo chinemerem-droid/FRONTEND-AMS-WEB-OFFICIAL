@@ -6,7 +6,7 @@ import { MdOutlineNotifications } from "react-icons/md";
 import { IoSettingsOutline } from "react-icons/io5";
 import { MdOutlineHistory } from "react-icons/md";
 import { CiLock } from "react-icons/ci";
-import { NavLink, Outlet } from "react-router-dom";
+import { NavLink, Navigate, Outlet, useNavigate } from "react-router-dom";
 import userIcon from "../images/user-icon.svg";
 import { CiSearch } from "react-icons/ci";
 import data from "../Amsweb/data/mock-data.json";
@@ -19,18 +19,26 @@ import "./Layout.css";
 import FrameIcon from "../images/Frame.svg";
 import { FaEye, FaEyeSlash } from "react-icons/fa";
 import End from "../images/End.svg";
+import axios from "axios";
+import { ToastContainer, toast } from "react-toastify";
+
 
 const Layout = () => {
+	const navigate = useNavigate()
 	const [contacts, setContacts] = useState(data);
 	const [isOpen, setOpen] = useState(false);
 	const [showDropdown, setDropdown] = useState(false);
-	const [showPassword, setshowPassword] = useState(false);
+	const [showPasswordModal, setshowPasswordModal] = useState(false);
 	const [password, settPassword] = useState("");
+	const [newPassword, setnewPassword] = useState("false");
+	const [Token, setToken] = useState("false");
+
 	const [shoPassword, setShoPassword] = useState(false);
 	const [exitOpen, setexitOpen] = useState(false);
 	const toggle = () => {
 		setOpen(!isOpen);
 	};
+	const token = sessionStorage.getItem("token")
 	const [openProfile, setOpenProfile] = useState(false);
 	const menuItem = [
 		{
@@ -56,17 +64,47 @@ const Layout = () => {
 	];
 	const handlePasswordmodal = () => {
 		setDropdown(false);
-		setshowPassword(true);
+		setshowPasswordModal(true);
 	};
 
 	const handleExit = () => {
-		setshowPassword(false);
+		setshowPasswordModal(false);
 	};
-	// const[Time, setTime] =useState(new Date())
-	// console.log(time)
-	return (
+	const handleLogout = () => {
+		navigate("/")
+		setTimeout(() => {
+			sessionStorage.removeItem("token")
+		}, 1500)
+	};
+	
+// 	const handleResetpassword = async () => {
+// try {
+// 	const response = await axios.post(
+// 		"https://attsystem-latest.onrender.com/api/reset/Reset",
+// 		{
+// 		// 	Token:
+// 		//  newPassword: 
+
+// 		}
+// 	);
+
+// 	if (response.status === 200) {
+	
+// 		toast.success("Password reset link sent successfully");
+// 	} else {
+	
+// 		toast.error("Failed to send password reset link");
+// 	}
+// } catch (error) {
+// 	toast.error("An error occurred. Please try again later.");
+// 	console.error(error);
+// }
+	// }
+	return(
 		<>
-			<main className="main">
+			<ToastContainer />
+		{token ? (	
+		<main className="main">
 				<div className="origial">
 					<header className="header">
 						<p>
@@ -121,7 +159,7 @@ const Layout = () => {
 								</div>
 							</div>
 						)}
-						{showPassword && (
+						{showPasswordModal && (
 							<div className="darkBG">
 								<div className="centered">
 									<div className="modal">
@@ -137,44 +175,44 @@ const Layout = () => {
 											</div>
 											<div className="inputDiv">
 												<input
-													type={showPassword ? "tel" : "password"}
+													type={shoPassword ? "tel" : "password"}
 													placeholder="Old Password"
 													value={password}
 													onChange={(e) => settPassword(e.target.value)}
 												/>
-												{showPassword ? (
+												{!shoPassword ? (
 													<FaEye
 														className="hidePassword"
-														onClick={() => setShoPassword(!showPassword)}
+														onClick={() => setShoPassword(!shoPassword)}
 													/>
 												) : (
 													<FaEyeSlash
 														className="hidePassword"
-														onClick={() => setShoPassword(!showPassword)}
+														onClick={() => setShoPassword(!shoPassword)}
 													/>
 												)}
 											</div>
 										</div>
-										<div className="inputss">
-											<div className="imageDiv">
-												<img src={FrameIcon} alt="" className="iconforreset" />
+										<div className="inputos">
+											<div className="imageDov">
+												<img src={FrameIcon} alt="" className="iconforresot" />
 											</div>
-											<div className="inputDiv">
+											<div className="inputDov">
 												<input
-													type={showPassword ? "tel" : "password"}
+													type={shoPassword ? "tel" : "password"}
 													placeholder="New Password"
-													value={password}
+													value={newPassword}
 													onChange={(e) => settPassword(e.target.value)}
 												/>
-												{showPassword ? (
+												{!shoPassword ? (
 													<FaEye
-														className="hidePassword"
-														onClick={() => setShoPassword(!showPassword)}
+														className="hidoPassword"
+														onClick={() => setShoPassword(!shoPassword)}
 													/>
 												) : (
 													<FaEyeSlash
-														className="hidePassword"
-														onClick={() => setShoPassword(!showPassword)}
+														className="hidoPassword"
+														onClick={() => setShoPassword(!shoPassword)}
 													/>
 												)}
 											</div>
@@ -221,10 +259,11 @@ const Layout = () => {
 								</NavLink>
 							))}
 							<NavLink
-								to={"/"}
+								to={"#"}
 								className="logOutIcon"
 								// activeClassName="acive"
 								style={{ display: "flex" }}
+								onClick={handleLogout}
 							>
 								<div className="icon">
 									<TbLogout className="" />
@@ -238,6 +277,10 @@ const Layout = () => {
 					</div>
 				</div>
 			</main>
+			) : (
+				<Navigate to="/"/>
+			)}
+		
 		</>
 	);
 };
