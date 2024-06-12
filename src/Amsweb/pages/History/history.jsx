@@ -14,6 +14,7 @@ import { CiSearch } from "react-icons/ci";
 import { TbLogout } from "react-icons/tb";
 // import dateIcon from "../images/date.svg";
 import { TbClockHour2 } from "react-icons/tb";
+import dayjs from "dayjs";
 import "./history.css";
 
 const History = () => {
@@ -22,6 +23,7 @@ const History = () => {
   const [showHistory, setShowHistory] = useState(true);
   const [showHistoryApproval, setShowHistoryApproval] = useState(false);
   const [responseData, setResponseData] = useState(null);
+  const [day, setDay] = useState("");
 
   const showattendancecontent = () => {
     setShowHistory(true);
@@ -33,6 +35,24 @@ const History = () => {
   };
 
   //
+  console.log(dayjs().format("DD MMM"));
+
+  const filteredDates = (date) => {
+    const today = dayjs();
+    const lastMonth = today.subtract(1, "month");
+    const lastWeek = today.subtract(7, "day");
+    const last5Days = today.subtract(5, "day");
+
+    if (day === "Last Month") {
+      return date.filter((d) => dayjs(d) >= lastMonth && dayjs(d) < today);
+    } else if (day === "Last Week") {
+      return date.filter((d) => dayjs(d) >= lastWeek && dayjs(d) < today);
+    } else if (day === "Last 5Days") {
+      return date.filter((d) => dayjs(d) >= last5Days && dayjs(d) < today);
+    } else {
+      return date;
+    }
+  };
 
   useEffect(() => {
     fetch(
@@ -80,11 +100,20 @@ const History = () => {
     return `${month} ${day}`;
   };
 
-  const filterbyDate = responseData && responseData.filter(
-    (res) => formatDate(res.date).toLowerCase().includes(search.toLowerCase())
+  const filterbyDate =
+    responseData &&
+    responseData.filter((res) =>
+      formatDate(res.date).toLowerCase().includes(search.toLowerCase())
+    );
+
+  const finalflowtrain = filteredDates(
+    filterbyDate && filterbyDate.filter((d) => dayjs(d.date) === dayjs())
   );
 
-  console.log(filterbyDate);
+  console.log(finalflowtrain);
+//   console.log(dayjs(d.date));
+  console.log(dayjs("2024-05-20T00:00:00"));
+//   console.log(filterbyDate);
   // const filteredContacts = contacts.filter((contact) =>
   // 	contact.Name.toLowerCase().includes(searchTerm.toLowerCase())
   //);
@@ -130,9 +159,15 @@ const History = () => {
                   Last Month <span class="icon">&#9662;</span>
                 </button>
                 <div class="dropdown-content">
-                  <a href="#">Last Month</a>
-                  <a href="#">Last week</a>
-                  <a href="#">Last 5 days</a>
+                  <a href="#" onClick={() => setDay("Last Month")}>
+                    Last Month
+                  </a>
+                  <a href="#" onClick={() => setDay("Last Week")}>
+                    Last week
+                  </a>
+                  <a href="#" onClick={() => setDay("Last 5Days")}>
+                    Last 5 days
+                  </a>
                 </div>
               </div>
             </div>
@@ -148,7 +183,6 @@ const History = () => {
                 className="search-bar"
                 value={search}
                 onChange={(e) => setSearch(e.target.value)}
-
               />
               <div class="dropdown">
                 <button class="dropdown-button">
