@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import "bootstrap";
 import "./notification.css";
 import { CiSearch } from "react-icons/ci";
@@ -13,7 +13,6 @@ import { jwtDecode } from "jwt-decode";
 import { toast, ToastContainer } from "react-toastify";
 import { Navigate, NavigationType } from "react-router-dom";
 
-
 const Notification = () => {
 	const [Approve, setApprove] = useState(data);
 	const [showApprove, setshowApprove] = useState(false);
@@ -21,6 +20,7 @@ const Notification = () => {
 	const [password, setPassword] = useState("");
 	const [shoPassword, setShoPassword] = useState(false);
 	const [showSeemore, setshowSeemore] = useState(false);
+	const [notificationData, setNotification] = useState([]);
 	// const [Token, setToken] = useState(false);
 
 	const token = sessionStorage.getItem("token");
@@ -43,6 +43,25 @@ const Notification = () => {
 	const HandleSeemore = () => {
 		setshowSeemore(true);
 	};
+	useEffect(() => {
+		fetch("https://attsystem-latest.onrender.com/api/User/GetNotification")
+			.then((response) => response.json())
+			.then((data) => {
+				// Map the message to the sen property of each notification object
+				const notificationsWithSen = data.map((notification) => ({
+					Staff_ID:notification.staff_ID,
+					sen: notification.message,
+					sen1: notification.sen1,
+					sen2: notification.sen2,
+					sen3: notification.sen3,
+					sen4: notification.sen4,
+				}));
+				setNotification(notificationsWithSen);
+			})
+			.catch((error) => console.error("Error fetching notification:", error));
+	}, []);
+
+
 	const handleSubmitpassword = async () => {
 		try {
 			const response = await axios.post(
@@ -52,22 +71,33 @@ const Notification = () => {
 					Password: password,
 				}
 			);
-			const approvalResponse = await axios.post( "https://attsystem-latest.onrender.com/api/User/Approve",
-              
-                {
-                   Staff_ID: staffId
-                }
-			);
-			toast.success("Approved successfully");
-			console.log(response.data)
-			if(response.status == 200){
-				toast.success(response.data)
-				setshowApprove(false)
-				setPassword("")
-			}else{
-				toast.error("Invalid password")
+			if (response.status === 200) {
+				// Password confirmed successfully
+				toast.success("Password confirmed successfully");
+	
+				const approveResponse = await axios.post(
+					"https://attsystem-latest.onrender.com/api/User/Approve", // Change this URL to your actual approval endpoint
+					{
+						Staff_ID: staffId,
+					}
+				);
+		
+					if (approveResponse.status === 200) {
+						// User approved successfully
+						toast.success("User approved successfully");
+					} else {
+						toast.error("Failed to approve user");
+					}
+
+
+            setshowApprove(false);
+            setPassword("");
+				setshowApprove(false);
+				setPassword("");
+			} else {
+				toast.error("Invalid password");
 			}
-			console.log(response)
+			console.log(response);
 		} catch (error) {
 			if (error.response.status === 401) {
 				toast.error("Incorrect password. Please try again.");
@@ -78,9 +108,32 @@ const Notification = () => {
 			}
 		}
 	};
+	
+
+	
+	const handleDenyUser = async () => {
+		try {
+			const response = await axios.post(
+				"https://attsystem-latest.onrender.com/api/User/RemoveUser",
+				{
+					data: { Staff_ID: staffId },
+				}
+			);
+			console.log(response.data);
+			// Handle success
+			toast.success("User removed successfully");
+		} catch (error) {
+			console.error("Error removing user:", error);
+			// Handle error, e.g., show an error message
+			toast.error("Failed to remove user");
+		}
+	};
+
+
+
 	return (
 		<>
-		<ToastContainer />
+			<ToastContainer />
 			<div className="table-ccontainer">
 				<form className="searchbar">
 					<input type="text" className="input" placeholder=" search" />
@@ -89,23 +142,20 @@ const Notification = () => {
 
 				<table>
 					<tbody>
-						{Approve.map((Approve) => (
-							<tr>
-								<td
-									className="sen"
-									dangerouslySetInnerHTML={{ __html: Approve.sen }}
-								></td>
-								<button
-									onClick={HandleSeemore}
-									className="sen1"
-									dangerouslySetInnerHTML={{ __html: Approve.sen1 }}
-								></button>
-								<td className="sen2">{Approve.sen2}</td>
+						{notificationData.map((notification, index) => (
+							<tr key={index}>
+								<td style={{ fontWeight: 'bold', fontSize: 'larger' }} dangerouslySetInnerHTML={{ __html: notification.sen }}></td>
+								<td>
+									<button className="sen1" onClick={HandleSeemore}>
+										See More
+									</button>
+								</td>
+								<td className="sen2">Today</td>
 								<td className="sen3">
-									<button onClick={handleApprove}>{Approve.sen3}</button>
+									<button onClick={handleApprove}>Approve</button>
 								</td>
 								<td className="sen4">
-									<button onClick={handleApprove}>{Approve.sen4}</button>
+									<button onClick={handleDenyUser}>Deny</button>
 								</td>
 							</tr>
 						))}
