@@ -30,15 +30,20 @@ function LoginPage() {
 	const submitCredentials = async () => {
 		setLoading(true)
 		try {
-			
-			const response = await axios.post('https://attsystem-latest.onrender.com/api/User/loginAdmin', {
-				Staff_ID: username,
-				Password: password
-			});
-			setLoading(false)
-			setMessage(response.data.message);
-			setToken(response.data.token);
+			try {
+				const response = await axios.post('https://attsystem-latest.onrender.com/api/User/loginAdmin', {
+				  Staff_ID: username,
+				  Password: password
+				});
+				setLoading(false);
+				setMessage(response.data.message);
+				setToken(response.data.token);
+				
 			sessionStorage.setItem("token", response.data.token)
+			  } catch (error) {
+				console.error('Error during login:', error);
+				// Handle errors here, e.g., display an error message to the user
+			  }
 			const decodedToken = jwtDecode(token);
 			const roleID = decodedToken.LabRole;
 			const nameID = decodedToken.nameid;
