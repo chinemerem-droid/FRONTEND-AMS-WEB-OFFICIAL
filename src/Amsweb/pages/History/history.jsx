@@ -150,10 +150,22 @@ const History = () => {
   }, []);
 
   const handleDelete = (id) => {
+
     console.log(id);
     console.log("fgfgfgfgfgfgfg");
     setNotifications(notifications.filter((n) => n.id !== id));
+    
+    axios.delete(`https://attsystem-latest.onrender.com/api/User/DeletionHistory/${id}`)
+      .then(() => {
+        // Remove the notification from the state only if the DELETE request is successful
+        setNotifications(notifications.filter(notification => notification.id !== id));
+      })
+      .catch(error => {
+        console.error("There was an error deleting the notification!", error);
+      });
   };
+
+ 
 
   return (
     <>
