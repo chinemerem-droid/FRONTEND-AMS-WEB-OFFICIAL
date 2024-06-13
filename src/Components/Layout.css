@@ -173,8 +173,6 @@ main {
 	padding-top: 2em;
 }
 
-
-
 .table-title {
 	/* padding-top: 6em 0em; */
 	background-color: #e3effd;
@@ -294,7 +292,15 @@ th {
 	position: absolute;
 	color: #ccc;
 }
+.hidoPassword {
+	position: absolute;
+	color: #ccc;
+}
 .inputss .imageDiv {
+	width: 14%;
+	border-right: 1px solid #ccc;
+}
+.inputos .imageDov {
 	width: 14%;
 	border-right: 1px solid #ccc;
 }
@@ -308,9 +314,23 @@ th {
 	margin-left: 6em;
 	margin-top: 2em;
 	border-radius: 10px;
-
+}
+.inputos {
+	display: flex;
+	flex-direction: row;
+	border: 1px solid #ccc;
+	width: 297px;
+	padding: 4px 10px;
+	gap: 10px;
+	margin-left: 6em;
+	margin-top: 2em;
+	border-radius: 10px;
 }
 .inputss .inputDiv {
+	width: 70%;
+	position: relative;
+}
+.inputos .inputDov {
 	width: 70%;
 	position: relative;
 }
@@ -321,30 +341,35 @@ th {
 	width: 100%;
 	font-size: 18px;
 }
+.inputDov input {
+	border: none;
+	outline: none;
+	padding: 10px 15px;
+	width: 100%;
+	font-size: 18px;
+}
 .modal .Reset {
 	border-radius: 6.01px;
- 	margin-top: 2em;
+	margin-top: 2em;
 	padding: 8.42px 33.67px;
 	background: #345782;
 	color: white;
 	margin-left: 11em;
 	border: none;
-   }
+}
 /* .iconforreset{
 
 } */
 .Exit {
-  	background: transparent;
-  	translate:  12em -.9em;;
+	background: transparent;
+	translate: 12em -0.9em;
 	border: none;
- }
-.top{
+}
+.top {
 	display: flex;
-     justify-content: center;
+	justify-content: center;
 	align-items: center;
 }
 .top h4 {
-    margin-top: 2em;
- 	
-
+	margin-top: 2em;
 }
