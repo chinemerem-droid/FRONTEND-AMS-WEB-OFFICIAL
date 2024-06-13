@@ -17,6 +17,7 @@ import { TbClockHour2 } from "react-icons/tb";
 import dayjs from "dayjs";
 import { FaTrash } from "react-icons/fa";
 import "./history.css";
+import axios from "axios";
 
 const History = () => {
   const [count, setCount] = useState(false);
@@ -127,20 +128,32 @@ const History = () => {
       </div>
     );
   };
-  
 
-    const [notifications, setNotifications] = useState([
-      { id: 1, text: 'You approved onboarding request of a new user John Doe' },
-      { id: 2, text: 'You denied onboarding request of a new user Jane Smith' },
-     
-    ]);
+  const [notifications, setNotifications] = useState([
+    { id: 1, text: "You approved onboarding request of a new user John Doe" },
+    { id: 2, text: "You denied onboarding request of a new user Jane Smith" },
+  ]);
 
-    const handleDelete = (id) => {
-      console.log(id);
-      console.log("fgfgfgfgfgfgfg");
-      setNotifications(notifications.filter(n => n.id !== id))
-    }
-  
+  useEffect(() => {
+    axios
+      .get("https://attsystem-latest.onrender.com/api/User/ApprovalHistory")
+      .then((response) => {
+        const fetchedNotifications = response.data.map((item, index) => ({
+          id: index,
+          text: item.message,
+        }));
+        setNotifications(fetchedNotifications);
+      })
+      .catch((error) => {
+        console.error("There was an error fetching the data!", error);
+      });
+  }, []);
+
+  const handleDelete = (id) => {
+    console.log(id);
+    console.log("fgfgfgfgfgfgfg");
+    setNotifications(notifications.filter((n) => n.id !== id));
+  };
 
   return (
     <>
@@ -244,19 +257,14 @@ const History = () => {
               </div>
             </div>
             <div className="notification-list">
-              {
-                notifications && notifications.map((n, i) => (
+              {notifications &&
+                notifications.map((n, i) => (
                   <NotificationBar
                     key={i}
                     text={n.text}
-                    onDelete={() =>
-                      handleDelete(n.id)
-                    }
+                    onDelete={() => handleDelete(n.id)}
                   />
-                  
-                ))
-              }
-              
+                ))}
             </div>
           </>
         )}
