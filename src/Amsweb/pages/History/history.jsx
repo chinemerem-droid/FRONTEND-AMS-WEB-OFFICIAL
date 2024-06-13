@@ -127,12 +127,20 @@ const History = () => {
       </div>
     );
   };
+  
 
-  const App = () => {
-    const handleDelete = (message) => {
-      alert(`Delete icon clicked for: ${message}`);
-    };
-  };
+    const [notifications, setNotifications] = useState([
+      { id: 1, text: 'You approved onboarding request of a new user John Doe' },
+      { id: 2, text: 'You denied onboarding request of a new user Jane Smith' },
+     
+    ]);
+
+    const handleDelete = (id) => {
+      console.log(id);
+      console.log("fgfgfgfgfgfgfg");
+      setNotifications(notifications.filter(n => n.id !== id))
+    }
+  
 
   return (
     <>
@@ -236,22 +244,19 @@ const History = () => {
               </div>
             </div>
             <div className="notification-list">
-              <NotificationBar
-                text="You approved onboarding request of a new user John Doe"
-                onDelete={() =>
-                  handleDelete(
-                    "You approved onboarding request of a new user John Doe"
-                  )
-                }
-              />
-              <NotificationBar
-                text="You denied onboarding request of a new user John Doe"
-                onDelete={() =>
-                  handleDelete(
-                    "You denied onboarding request of a new user John Doe"
-                  )
-                }
-              />
+              {
+                notifications && notifications.map((n, i) => (
+                  <NotificationBar
+                    key={i}
+                    text={n.text}
+                    onDelete={() =>
+                      handleDelete(n.id)
+                    }
+                  />
+                  
+                ))
+              }
+              
             </div>
           </>
         )}

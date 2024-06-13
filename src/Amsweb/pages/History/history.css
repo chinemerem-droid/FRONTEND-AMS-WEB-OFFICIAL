@@ -166,18 +166,18 @@
 }
 table {
     border-collapse: collapse;
-    border: 0; /* Remove borders from table cells */
+    border: 0;
   }
   
   th {
     background-color: #E3EFFD;
-    padding: 5px 10px; /* Add some padding to header cells */
+    padding: 5px 10px; 
   }
   
-  /* Style table data cells (<td>) */
+  
   td {
-    padding: 5px 10px; /* Add padding for data cells */
-    text-align: left;  /* Align data to the left */
+    padding: 5px 10px; 
+    text-align: left;  
   }
   .notification-list {
     padding: 10px;
@@ -193,7 +193,7 @@ table {
     margin: 10px 0;
     border-radius: 5px;
     background-color: #f9f9f9;
-    box-shadow: 0 1px 4px rgba(0, 0, 0, 0.1); /* Subtle shadow */
+    box-shadow: 0 1px 4px rgba(0, 0, 0, 0.1); 
   }
   
   .notification-bar span {
