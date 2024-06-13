@@ -1,8 +1,9 @@
-import React, { useState } from "react";
+import React, { useState,useContext } from "react";
 import "./LoginPage.css";
 import { FaEye, FaEyeSlash } from "react-icons/fa";
 import { toast } from "react-toastify";
 import { ToastContainer } from "react-toastify";
+import  {jwtDecode}  from "jwt-decode"; 
 import axios from "axios";
 import {
 	LoginIcon,
@@ -13,8 +14,11 @@ import {
 import { useNavigate } from "react-router-dom";
 import * as imports from "../../components/SvgIcons";
 import Loader from "../../components/Loader";
+import { RoleContext } from '../../../RoleContext';
+
 function LoginPage() {
 	const navigate = useNavigate();
+	const { setRoleID, setNameID } = useContext(RoleContext);
 	const [showPassword, setShowPassword] = useState(false);
 	const [loading, setLoading] = useState(false);
 	const [username, setUsername] = useState("");
@@ -35,6 +39,14 @@ function LoginPage() {
 			setMessage(response.data.message);
 			setToken(response.data.token);
 			sessionStorage.setItem("token", response.data.token)
+			const decodedToken = jwtDecode(token);
+			const roleID = decodedToken.LabRole;
+			const nameID = decodedToken.nameid;
+			console.log('Decoded Token:', decodedToken);
+			console.log('Role_ID:', roleID);
+			setRoleID(roleID); 
+			setNameID(nameID);
+			console.log(`Staff_ID: ${nameID}`);
 			navigate("/home")
 		}
 		catch (error) {

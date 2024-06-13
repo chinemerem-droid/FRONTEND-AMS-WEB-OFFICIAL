@@ -12,7 +12,7 @@ function App() {
   return (
     <>
       <Router>
-        {/* <Sidebar> */}
+  
         <Routes>
           <Route path="/" element={<LoginPage />} />
           <Route path="" element={<Layout />}>
@@ -22,7 +22,7 @@ function App() {
             <Route path="/history" element={<History />} />
           </Route>
         </Routes>
-        {/* </Sidebar> */}
+        
       </Router>
     </>
 
