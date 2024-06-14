@@ -62,6 +62,26 @@
 }
 */
 
+.button-con2 button {
+	color: #fff;
+	background: #333;
+	border-radius: 10.99px;
+	font-size: 17.95px;
+	font-weight: 400;
+	cursor: not-allowed;
+	border: none;
+	padding: 10px 20px;
+	width: 273px;
+	display: flex;
+	flex-direction: row;
+	justify-content: center;
+	align-items: center;
+	gap: 5px;
+}
+.button-con2 {
+	margin-top: 20px;
+}
+
 .button-con button {
 	color: #fff;
 	background: #345782;
@@ -72,6 +92,7 @@
 	border: none;
 	padding: 10px 20px;
 	width: 273px;
+	
 }
 .button-con {
 	margin-top: 20px;

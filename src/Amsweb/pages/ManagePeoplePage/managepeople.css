@@ -1,0 +1,175 @@
+.manage-people-container {
+  padding: 3em;
+  display: flex;
+  flex-direction: column; /* Ensure content aligns vertically */
+}
+
+.manage-people-header h1 {
+  font-size: 21.7px;
+  font-weight: 400;
+  margin-bottom: 1em;
+}
+
+.scroll-child {
+  display: flex;
+  border-radius: 15px;
+  margin-bottom: 2em;
+}
+
+.scroll-child h2 {
+  font-weight: 500;
+  font-size: 23.03px;
+  color: var(--clr-primary);
+}
+
+.scroll-child h3 {
+  font-weight: 400;
+  font-size: 15.35px;
+}
+
+.info-and-search {
+  background-color: var(--clr-third);
+  border-radius: 10px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 5em;
+  padding: 1em;
+  margin-bottom: 2em; /* Add margin bottom to separate from table */
+}
+.center-text {
+  display: block;
+  text-align: center;
+}
+.popup-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.5);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+}
+
+.popup {
+  background: white;
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+  width: 300px;
+  text-align: center;
+  position: relative;
+}
+
+.popup-close {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  background: none;
+  border: none;
+  font-size: 16px;
+  cursor: pointer;
+}
+
+.popup-buttons {
+  margin-top: 20px;
+}
+
+.popup-button {
+  margin: 5px;
+  padding: 10px 20px;
+  border: none;
+  background: #007bff;
+  color: white;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.popup-button:hover {
+  background: #0056b3;
+}
+
+
+.info-and-search-content {
+  width: 30%;
+}
+.cells-staffID {
+  position: relative; /* Enable relative positioning for child elements */
+}
+
+.staff-id-container {
+  display: flex; /* Arrange icon and text horizontally */
+  align-items: center; /* Align content vertically in the center */
+}
+
+.staff-id-icon {
+  width: 50px;
+  height: 50px;
+  margin-right: 5px; /* Add a small margin between icon and text */
+}
+
+
+.info-and-search-content h2 {
+  font-size: 21px;
+  line-height: 24.61px;
+  font-weight: 400;
+}
+
+.info-and-search-content2 {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 70%;
+}
+
+.info-and-search-searchbar {
+  border-radius: 5px;
+  border: 1px solid #f0f0f0ed;
+  align-items: center;
+  display: flex;
+  background-color: white;
+  width: 80%;
+  padding-left: 1em;
+  padding-right: 1em;
+  height: 30px;
+}
+
+#search-icon {
+  margin-left: 70px;
+  display: flex;
+}
+
+.input {
+  background-color: transparent;
+  border: none;
+  height: 100%;
+  font-size: 1rem;
+  width: 100%;
+  margin-left: 5px;
+}
+
+.input:focus {
+  outline: none;
+}
+
+.add-user-button {
+  padding: 1em 2em;
+  border: none;
+  background-color: var(--clr-primary);
+  color: var(--clr-third);
+  border-radius: 5px;
+  font-size: 0.7rem;
+  transition: background-color 0.3s;
+}
+
+.add-user-button:hover {
+  background-color: var(--clr-primary-hover);
+}
+
+/* Added rule to style table headers */
+th {
+  text-align: left;  /* Change this to 'center' or 'right' for different alignment */
+}
