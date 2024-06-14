@@ -136,35 +136,42 @@ const Notification = () => {
 
 
 	return (
-		<>
-			<ToastContainer />
-			<div className="table-ccontainer">
-				<form className="searchbar">
-					<input type="text" className="input" placeholder=" search" />
-					<CiSearch id="search-icon" />
-				</form>
+        <>
+            <ToastContainer />
+            <div className="table-ccontainer">
+                <form className="searchbar">
+                    <input type="text" className="input" placeholder="Search" />
+                    <CiSearch id="search-icon" />
+                </form>
 
-				<table>
-					<tbody>
-						{notificationData.map((notification, index) => (
-							<tr key={index}>
-								<td style={{ fontWeight: 'bold', fontSize: 'larger' }} dangerouslySetInnerHTML={{ __html: notification.sen }}></td>
-								<td>
-									<button className="sen1" onClick={HandleSeemore}>
-										See More
-									</button>
-								</td>
-								<td className="sen2">Today</td>
-								<td className="sen3">
-									<button onClick={handleApprove}>Approve</button>
-								</td>
-								<td className="sen4">
-									<button onClick={handleDenyUser}>Deny</button>
-								</td>
-							</tr>
-						))}
-					</tbody>
-				</table>
+                {notificationData.length > 0 ? (
+                    <table>
+                        <tbody>
+                            {notificationData.map((notification, index) => (
+                                <tr key={index}>
+                                    <td
+                                        style={{ fontWeight: 'bold', fontSize: 'larger' }}
+                                        dangerouslySetInnerHTML={{ __html: notification.sen }}
+                                    ></td>
+                                    <td>
+                                        <button className="sen1" onClick={HandleSeemore}>
+                                            See More
+                                        </button>
+                                    </td>
+                                    <td className="sen2">Today</td>
+                                    <td className="sen3">
+                                        <button onClick={handleApprove}>Approve</button>
+                                    </td>
+                                    <td className="sen4">
+                                        <button onClick={handleDenyUser}>Deny</button>
+                                    </td>
+                                </tr>
+                            ))}
+                        </tbody>
+                    </table>
+                ) : (
+                    <p style={{ textAlign: 'center', marginTop: '20px' }}>No information available</p>
+                )}
 
 				{showApprove && (
 					<div className="darkBGModal">
