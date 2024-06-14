@@ -21,6 +21,7 @@ const Notification = () => {
 	const [shoPassword, setShoPassword] = useState(false);
 	const [showSeemore, setshowSeemore] = useState(false);
 	const [notificationData, setNotification] = useState([]);
+	const [staffID, setStaffId] = useState(null);
 	// const [Token, setToken] = useState(false);
 
 	const token = sessionStorage.getItem("token");
@@ -57,6 +58,9 @@ const Notification = () => {
 					sen4: notification.sen4,
 				}));
 				setNotification(notificationsWithSen);
+				if (notificationsWithSen.length > 0) {
+					setStaffId(notificationsWithSen[0].Staff_ID); // Assuming you want the first Staff_ID
+				}
 			})
 			.catch((error) => console.error("Error fetching notification:", error));
 	}, []);
@@ -78,7 +82,7 @@ const Notification = () => {
 				const approveResponse = await axios.post(
 					"https://attsystem-latest.onrender.com/api/User/Approve", // Change this URL to your actual approval endpoint
 					{
-						Staff_ID: staffId,
+						Staff_ID: staffID,
 					}
 				);
 		
