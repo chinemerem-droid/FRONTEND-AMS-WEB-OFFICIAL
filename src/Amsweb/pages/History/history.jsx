@@ -26,6 +26,9 @@ const History = () => {
   const [showHistoryApproval, setShowHistoryApproval] = useState(false);
   const [responseData, setResponseData] = useState(null);
   const [day, setDay] = useState("");
+  const [contacts, setContacts] = useState([]); // Initialize contacts state
+const [searchTerm, setSearchTerm] = useState(""); // Initialize searchTerm state
+
 
   const showattendancecontent = () => {
     setShowHistory(true);
