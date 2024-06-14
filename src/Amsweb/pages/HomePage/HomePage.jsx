@@ -7,7 +7,10 @@ const HomePage = () => {
     const [searchTerm, setSearchTerm] = useState("");
 
     useEffect(() => {
-        fetch("https://attsystem-latest.onrender.com/api/Attendance/AttendanceHistory")
+        const currentDate = new Date().toISOString().split('T')[0]; 
+        const apiUrl = `https://attsystem-latest.onrender.com/api/Attendance/AttendanceByDate?date=${currentDate}`;
+
+        fetch(apiUrl)
             .then((response) => response.json())
             .then((data) => {
                 const formattedData = data.map((item) => ({
@@ -15,7 +18,7 @@ const HomePage = () => {
                     staffID: item.staff_ID,
                     CheckIn: item.entryTime,
                     CheckOut: item.exitTime,
-                    location: item.date,
+                    // Date: item.date,
                 }));
                 setContacts(formattedData);
             })
@@ -50,20 +53,23 @@ const HomePage = () => {
                         <th className="cell">Staff ID</th>
                         <th className="cell">Check In</th>
                         <th className="cell">Check Out</th>
-                        <th className="cell">Location</th>
                     </tr>
                 </thead>
-
                 <tbody>
-                    {filteredContacts.map((contact, index) => (
-                        <tr key={index}>
-                            <td className="cells-Name">{contact.Name}</td>
-                            <td className="cells-staffID">{contact.staffID}</td>
-                            <td className="cells-CheckIn">{contact.CheckIn}</td>
-                            <td className="cells-CheckOut">{contact.CheckOut}</td>
-                            <td className="cells-location">{contact.location}</td>
+                    {filteredContacts.length > 0 ? (
+                        filteredContacts.map((contact, index) => (
+                            <tr key={index}>
+                                <td className="cells-Name">{contact.Name}</td>
+                                <td className="cells-staffID">{contact.staffID}</td>
+                                <td className="cells-CheckIn">{contact.CheckIn}</td>
+                                <td className="cells-CheckOut">{contact.CheckOut}</td>
+                            </tr>
+                        ))
+                    ) : (
+                        <tr>
+                            <td colSpan="4" style={{ textAlign: 'center' }}>No information available</td>
                         </tr>
-                    ))}
+                    )}
                 </tbody>
             </table>
         </div>
