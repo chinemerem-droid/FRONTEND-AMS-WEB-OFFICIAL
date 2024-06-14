@@ -1,49 +1,54 @@
 .switch-button {
-  width: 1110px;
-  height: 52.03px;
+  width: 100%px;
+  height: 10svh;
   position: relative;
   background: rgb(231, 231, 231);
   border-radius: 7.54px;
   overflow: hidden;
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 10px;
-}
+  display: flex;
+ flex-direction: row;
+  gap: 1em;
+  }
 .attendance-history {
-  width: 527.85px;
-  height: 42.98px;
-  left: 20.36px;
-  top: 4.252px;
+  width: 50%;
+  height: 100%;
+  margin-left: .8em;
+  margin-top: .1em;
+   margin-bottom: .2em;
   position: absolute;
-
   border-radius: 7.5px;
-  overflow: hidden;
-  cursor: pointer;
-}
+   cursor: pointer;
+   align-items: center;
+   display: flex;
+   justify-self: center;
+ }
 
 .attendance-history-background {
   background: rgba(52, 87, 130, 0.3);
   box-shadow: rgba(52, 87, 130, 0.08) 0px 0px 3.7px 2.26px;
 }
 .attendance-history-content {
-  left: 215.67px;
-  top: 15.08px;
-  position: absolute;
+  
+  margin: 0 auto;
   color: rgb(52, 87, 130);
   font-size: 12.07px;
   font-family: Roboto;
   font-weight: 600;
-  overflow-wrap: break-word;
-}
+ }
+
 .approval-history {
-  width: 527.85px;
-  height: 33.93px;
-  left: 561.79px;
-  top: 9.05px;
+  width: 48%;
+  height: 100%;
+  left: 51%;
+  top: .2em;
+  margin-bottom: .2em;
   position: absolute;
   border-radius: 7.5px;
-  overflow: hidden;
-  cursor: pointer;
+   cursor: pointer;
+   align-items: center;
+  display: flex;
+  justify-self: center;
+ 
 }
 
 .approval-history-background {
@@ -51,14 +56,11 @@
   background: rgba(52, 87, 130, 0.3);
 }
 .approval-history-content {
-  left: 215.67px;
-  top: 10.56px;
-  position: absolute;
+   margin: 0 auto;
   color: rgb(52, 87, 130);
   font-size: 12.07px;
   font-family: Roboto;
-  font-weight: 500;
-  overflow-wrap: break-word;
+  font-weight: 600;
 }
 
 .table-container-history {
