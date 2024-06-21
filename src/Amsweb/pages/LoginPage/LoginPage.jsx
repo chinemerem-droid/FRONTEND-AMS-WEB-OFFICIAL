@@ -42,9 +42,10 @@ function LoginPage() {
 			sessionStorage.setItem("token", response.data.token)
 			  } catch (error) {
 				console.error('Error during login:', error);
-				// Handle errors here, e.g., display an error message to the user
+				toast.error("Invalid Credentials")
+
 			  }
-			const decodedToken = jwtDecode(token);
+			const decodedToken = token &&  jwtDecode(token);
 			const roleID = decodedToken.LabRole;
 			const nameID = decodedToken.nameid;
 			console.log('Decoded Token:', decodedToken);
@@ -57,7 +58,7 @@ function LoginPage() {
 		catch (error) {
 			setLoading(false)
 			console.log(error);
-			toast.error(error.response.data)
+			toast.error("An Error Occured")
 		}
 	};
 

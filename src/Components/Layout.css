@@ -148,10 +148,8 @@ main {
 
 .user-con {
 	display: flex;
-	margin: 0px auto;
 	align-items: center;
 	gap: 8px;
-	margin-left: 34em;
 	cursor: pointer;
 }
 
