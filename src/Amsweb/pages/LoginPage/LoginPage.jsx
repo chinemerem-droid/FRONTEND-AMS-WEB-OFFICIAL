@@ -55,7 +55,8 @@ function LoginPage() {
       console.error("Error during login:", error);
       if (error.response && error.response.data) {
         toast.error(
-          error.response.data.message || "Invalid credentials, Please try again "
+          error.response.data.message ||
+            "Invalid credentials, Please try again "
         );
       } else {
         toast.error("An error occurred during login. Please try again.");
