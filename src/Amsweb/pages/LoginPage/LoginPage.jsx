@@ -38,16 +38,20 @@ function LoginPage() {
       );
       setLoading(false);
       setMessage(response.data.message);
-      setToken(response.data.token);
-      sessionStorage.setItem("token", response.data.token);
+      const token = response.data.token;
+      setToken(token);
+      sessionStorage.setItem("token", token);
 
-      const decodedToken = jwtDecode(response.data.token);
+      const decodedToken = jwtDecode(token);
       const roleID = decodedToken.LabRole;
       const nameID = decodedToken.nameid;
+
       console.log("Decoded Token:", decodedToken);
       console.log("Role_ID:", roleID);
-      setRoleID(roleID);
-      setNameID(nameID);
+
+      sessionStorage.setItem("roleID", roleID);
+      sessionStorage.setItem("nameID", nameID);
+
       console.log(`Staff_ID: ${nameID}`);
       navigate("/home");
     } catch (error) {
@@ -66,7 +70,7 @@ function LoginPage() {
   return (
     <>
       <ToastContainer />
-      <div className="container">
+      <div className="container78">
         <div className="container2">
           <img src={LoginIcon} alt="" />
         </div>

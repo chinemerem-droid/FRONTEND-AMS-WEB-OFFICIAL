@@ -5,13 +5,6 @@ import { CiSearch } from "react-icons/ci";
 import AddNewUser from "../AddNewUser/addNewUser";
 import { ToastContainer } from "react-toastify";
 import { FaUser } from 'react-icons/fa'; 
-const randomImages = [ // Array of image URLs
-  "https://cdn-icons-png.flaticon.com/128/1507/1507155.png",
-  "https://cdn-icons-png.flaticon.com/128/2632/2632839.png",
-  "https://cdn-icons-png.flaticon.com/128/1507/1507187.png",
-  "https://cdn-icons-png.flaticon.com/128/1507/1507115.png",
-  "https://cdn-icons-png.flaticon.com/128/1507/1507168.png",
-];
 
 function UserPopup({ contact, onClose, onRemove}) {
   return (
@@ -124,7 +117,7 @@ function Managepeople() {
                 <form className="info-and-search-searchbar">
                   <input
                     type="text"
-                    className="input"
+                    className="input9"
                     placeholder=" search"
                     value={searchTerm}
                     onChange={(e) => setSearchTerm(e.target.value)}

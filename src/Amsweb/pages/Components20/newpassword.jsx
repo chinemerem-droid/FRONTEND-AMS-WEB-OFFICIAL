@@ -87,7 +87,7 @@ const NewPassword = () => {
     <div className="container">
       <h2 className="title">Reset Password</h2>
       <form onSubmit={handleSubmit} className="form">
-        <label className="label" htmlFor="newPassword">
+        <label className="label2" htmlFor="newPassword">
           Enter Your New Password
         </label>
         <div className="password-input-container">

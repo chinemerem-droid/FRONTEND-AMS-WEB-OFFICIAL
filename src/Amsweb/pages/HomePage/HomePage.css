@@ -7,6 +7,7 @@
     background-color: #f0f0f0ed;
     height: 2em;
     flex-direction: row;
+	outline: none;
     width: 98%;
     margin-left: 5px;
 
@@ -15,7 +16,7 @@
 #search-icon {
 
  	display: flex;
-	 margin-top: 7px;
+	margin-top: 7px;
 	justify-content: end;
 }
 
@@ -25,6 +26,7 @@
  	height: 100%;
 	font-size: 1rem;
 	width: 90%;
+	outline: none;
  }
 
 .input:focus {

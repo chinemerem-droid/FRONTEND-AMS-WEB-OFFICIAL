@@ -18,7 +18,7 @@ const AcceptToken = () => {
       <h2 className="title">Reset Password</h2>
       <form onSubmit={handleSubmit} className="form">
         <label className="label3" htmlFor="token">Enter Token</label>
-        <label className='label2'>Enter the token you received</label>
+        <label className='label42'>Enter the token you received</label>
         <input
           type="text"
           id="token"

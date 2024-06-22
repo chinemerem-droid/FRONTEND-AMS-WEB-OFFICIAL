@@ -34,7 +34,7 @@ const ResetPassword = () => {
         <label className="label3" htmlFor="email">
           Enter Email
         </label>
-        <label className='label2' >Enter your Email To Recieve Reset Token</label>
+        <label className='label42' >Enter your Email To Recieve Reset Token</label>
         <input
           type="email"
           id="email"
