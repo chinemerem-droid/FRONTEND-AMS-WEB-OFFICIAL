@@ -11,7 +11,7 @@ import {
   userIcon,
   FrameIcon,
 } from "../../components/SvgIcons";
-import { useNavigate } from "react-router-dom";
+import { useNavigate,Navigate } from "react-router-dom";
 import * as imports from "../../components/SvgIcons";
 import Loader from "../../components/Loader";
 import { RoleContext } from "../../../RoleContext";
@@ -25,6 +25,10 @@ function LoginPage() {
   const [password, setPassword] = useState("");
   const [message, setMessage] = useState("");
   const [token, setToken] = useState("");
+
+  const handleForgotPassword = () => {
+    navigate('/reset'); // Redirect to the reset route
+  };
 
   const submitCredentials = async () => {
     setLoading(true);
@@ -125,6 +129,11 @@ function LoginPage() {
               <button onClick={submitCredentials}>Login</button>
             </div>
           )}
+          <div className="forgot-password">
+            <a href="/reset" onClick={handleForgotPassword}>
+          Forgot Password?
+        </a>
+          </div>
         </div>
       </div>
     </>
