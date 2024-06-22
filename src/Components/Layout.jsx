@@ -25,7 +25,7 @@ import { ToastContainer, toast } from "react-toastify";
 const Layout = () => {
 	const navigate = useNavigate();
 	const [contacts, setContacts] = useState(data);
-	const [isOpen, setOpen] = useState(false);
+	const [isOpen, setOpen] = useState(true);
 	const [showDropdown, setDropdown] = useState(false);
 	const [showPasswordModal, setshowPasswordModal] = useState(false);
 	const [password, settPassword] = useState("");
@@ -118,80 +118,8 @@ const Layout = () => {
 								</div>
 								<div className="usericon">
 									<img src={userIcon} alt="" />
-								</div>
+								</div>	
 							</div>
-						
-							{showPasswordModal && (
-								<div className="darkBG">
-									<div className="centered">
-										<div className="modal">
-											<div className="top">
-												<h4>Reset password</h4>
-												<button onClick={handleExit} className="Exit">
-													<img src={End} alt="" />
-												</button>
-											</div>
-											<div className="inputss">
-												<div className="imageDiv">
-													<img
-														src={FrameIcon}
-														alt=""
-														className="iconforreset"
-													/>
-												</div>
-												<div className="inputDiv">
-													<input
-														type={shoPassword ? "tel" : "password"}
-														placeholder="Old Password"
-														value={password}
-														onChange={(e) => settPassword(e.target.value)}
-													/>
-													{!shoPassword ? (
-														<FaEye
-															className="hidePassword"
-															onClick={() => setShoPassword(!shoPassword)}
-														/>
-													) : (
-														<FaEyeSlash
-															className="hidePassword"
-															onClick={() => setShoPassword(!shoPassword)}
-														/>
-													)}
-												</div>
-											</div>
-											<div className="inputos">
-												<div className="imageDov">
-													<img
-														src={FrameIcon}
-														alt=""
-														className="iconforresot"
-													/>
-												</div>
-												<div className="inputDov">
-													<input
-														type={shoPassword ? "tel" : "password"}
-														placeholder="New Password"
-														value={newPassword}
-														onChange={(e) => settPassword(e.target.value)}
-													/>
-													{!shoPassword ? (
-														<FaEye
-															className="hidoPassword"
-															onClick={() => setShoPassword(!shoPassword)}
-														/>
-													) : (
-														<FaEyeSlash
-															className="hidoPassword"
-															onClick={() => setShoPassword(!shoPassword)}
-														/>
-													)}
-												</div>
-											</div>
-											<button className="Reset">Reset Password</button>
-										</div>
-									</div>
-								</div>
-							)}
 						</header>
 
 						<div className="containerD">
@@ -201,14 +129,14 @@ const Layout = () => {
 										{isOpen ? (
 											<>
 												<span className="ams">AMS ADMIN PORTAL</span>
-												<IoIosArrowRoundForward
+												<IoIosArrowRoundBack
 													onClick={toggle}
 													className="main-arrow"
 												/>
 											</>
 										) : (
 											<>
-												<IoIosArrowRoundBack
+												<IoIosArrowRoundForward
 													onClick={toggle}
 													className="main-arrow"
 												/>

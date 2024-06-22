@@ -21,6 +21,9 @@
 
 	/* position: absolute; */
 }
+.clockIcon{
+	margin: -2px 3px -2px 10px;
+}
 
 .header h3 {
 	font-size: 18px;
@@ -68,18 +71,16 @@ main {
 .sidebar {
 	background: #fff;
 	height: 100vh;
-	/* margin-top: 71px; */
 	width: 250px;
-	/* margin-left: 20px; */
 	padding-left: 20px;
 	border: 1px solid #c2c2c2;
+	transition: width 0.3s;
 }
 .sidebar-closed {
 	background: #fff;
 	height: 100vh;
-	/* margin-top: 71px; */
 	width: 70px;
-	/* margin-left: 20px; */
+	transition: width 0.7s;
 	padding-left: 20px;
 	border: 1px solid #c2c2c2;
 }
@@ -87,25 +88,16 @@ main {
 .link {
 	display: flex;
 	color: #345782;
-	/* transition: all 0.5s; */
 	gap: 1em;
 	align-items: center;
 	margin-bottom: 2em;
-	/* border: 2px solid red; */
+	text-decoration: none;
 }
 .link:hover {
-	/* background: lightskyblue; */
 	color: #000;
 	transition: all 0.5s;
-	/* height: 2em;  */
 }
-/* .active {
-	background: lightskyblue;
-	color: #000;
-} */
-/* .icon,
-.link_text {
-	font-size: 15px; */
+
 
 .nav-icon {
 	width: 2em;
@@ -113,18 +105,12 @@ main {
 	background-color: #fff;
 }
 
-/* .arrow {
-	font-size: 25px;
-	width: 30px;
-	padding-left: 120px;
-} */
 
 .arrow {
 	padding: 15px 10px;
 	margin-bottom: 20px;
 	display: flex;
 	gap: 15px;
-	/* width: 100%; */
 }
 
 .arrow .ams {
@@ -204,7 +190,8 @@ tr:nth-child(even) {
 	color: rgb(164, 12, 12);
 }
 .dateIcon {
-	width: 5%;
+	width: 9%;
+	margin: 0px 4px -3.5px 10px;
 }
 
 .userDropdown {
@@ -221,42 +208,6 @@ tr:nth-child(even) {
 	text-align: center !important;
 }
 
-/* table,
-th,
-td {
-	border-collapse: separate;
-	padding: 0.5rem 1.5rem;
-}
-table {
-	width: 100%;
-	border-spacing: 0 10px;
-	padding-left: 7px;
-}
-thead tr {
-	background-color: #e3effd;
-}
-th {
-	color: #8d8d8d;
-	font-weight: 700;
-}
-.cells-Name {
-	color: #000000;
-}
-.cells-staffID {
-	color: #000000;
-}
-.cells-CheckIn {
-	color: #345782;
-}
-.cells-CheckOut {
-	color: #345782;
-}
-.cells-location {
-	color: #000000;
-}
-.tbody {
-	padding-left: 10px;
-} */
 .darkBG {
 	background-color: rgba(0, 0, 0, 0.2);
 	width: 100vw;
