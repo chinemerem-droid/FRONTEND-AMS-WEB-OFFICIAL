@@ -67,14 +67,22 @@ tr:nth-child(even) {
 
 .logOutIcon {
 	margin-top: 15em;
-
+	text-decoration: none;
 	height: 24px;
 	padding: 4px 6px 3px 4px;
 	gap: 10px;
 	opacity: 0.7px;
 	color: rgb(164, 12, 12);
 }
-
+.user-icon {
+	font-size: 35px;        
+	color: #345782;       
+	background-color: #ccc; 
+	border-radius: 50%;   
+	padding: 8px;          
+	display: inline-block;
+  }
+  
 table,
 th,
 td {
@@ -95,6 +103,10 @@ th {
 	font-weight: 700;
 	text-align: left;
 }
+.cells-icon{
+	text-align: right;
+}
+
 .cells-Name {
 	color: #000000;
 }

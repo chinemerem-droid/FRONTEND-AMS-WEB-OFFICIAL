@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { CiSearch } from "react-icons/ci";
 import "./HomePage.css";
+import { FaUser } from 'react-icons/fa';
 
 const HomePage = () => {
     const [contacts, setContacts] = useState([]);
@@ -61,6 +62,7 @@ const HomePage = () => {
             <table>
                 <thead>
                     <tr className="tableHead">
+                        <th className="cell2"></th>
                         <th className="cell">Name</th>
                         <th className="cell">Staff ID</th>
                         <th className="cell">Check In</th>
@@ -72,6 +74,7 @@ const HomePage = () => {
                     {filteredContacts.length > 0 ? (
                         filteredContacts.map((contact, index) => (
                             <tr key={index}>
+                                <td className="cells-icon"> <FaUser className="user-icon" /></td>
                                 <td className="cells-Name">{contact.Name}</td>
                                 <td className="cells-staffID">{contact.staffID}</td>
                                 <td className="cells-CheckIn">{contact.CheckIn}</td>

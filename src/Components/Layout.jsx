@@ -169,7 +169,7 @@ const Layout = () => {
 									<div className="icon2">
 										<TbLogout className="" />
 									</div>
-									<div className="link_text">Log Out</div>
+									{isOpen && <div className="link_text">Log Out</div>}
 								</NavLink>
 							</div>
 							<div className="outlet-container">
