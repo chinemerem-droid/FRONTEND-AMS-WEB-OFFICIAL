@@ -114,12 +114,11 @@ main {
 }
 
 .arrow .ams {
-	margin-top: 5px;
-
-	font-size: 13px;
-	font-weight: 500;
+	margin-top: 6.7px;
+	color: #345782;
+	font-size: 11px;
+	font-weight: 700;
 	line-height: 21.09px;
-	/* width: 80%; */
 }
 
 .arrow .main-arrow {
@@ -179,10 +178,18 @@ tr:nth-child(even) {
 	overflow: scroll;
 	width: 100%;
 }
-
+.icon{
+	margin-top: 4px;
+}
+.icon2{
+	margin-top: 2px;
+}
+.link_text{
+ text-decoration: none;
+}
 .logOutIcon {
 	margin-top: 15em;
-
+	margin-bottom: 50px;
 	height: 24px;
 	padding: 4px 6px 3px 4px;
 	gap: 10px;
@@ -306,9 +313,6 @@ tr:nth-child(even) {
 	margin-left: 11em;
 	border: none;
 }
-/* .iconforreset{
-
-} */
 .Exit {
 	background: transparent;
 	translate: 12em -0.9em;

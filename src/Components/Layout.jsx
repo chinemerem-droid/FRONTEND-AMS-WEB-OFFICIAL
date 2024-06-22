@@ -1,10 +1,8 @@
 import React, { useState, useEffect } from "react";
 // import "bootstrap";
 import { IoIosArrowRoundBack, IoIosArrowRoundForward } from "react-icons/io";
-import { MdOutlineHome } from "react-icons/md";
-import { MdOutlineNotifications } from "react-icons/md";
+import { MdOutlineHome,MdOutlineNotifications,MdOutlineHistory,MdLockReset } from "react-icons/md";
 import { IoSettingsOutline } from "react-icons/io5";
-import { MdOutlineHistory } from "react-icons/md";
 import { CiLock } from "react-icons/ci";
 import { NavLink, Navigate, Outlet, useNavigate } from "react-router-dom";
 import userIcon from "../images/user-icon.svg";
@@ -60,6 +58,11 @@ const Layout = () => {
 			Path: "/history",
 			name: "History",
 			Icon: <MdOutlineHistory className="nav-icon" />,
+		},
+		{
+			Path: "/reset-password",
+			name: "Reset Password",
+			Icon: <MdLockReset className="nav-icon" />,
 		},
 	];
 	const handlePasswordmodal = () => {
@@ -163,10 +166,10 @@ const Layout = () => {
 									style={{ display: "flex" }}
 									onClick={handleLogout}
 								>
-									<div className="icon">
+									<div className="icon2">
 										<TbLogout className="" />
 									</div>
-									{isOpen && <div className="link_text">Log Out</div>}
+									<div className="link_text">Log Out</div>
 								</NavLink>
 							</div>
 							<div className="outlet-container">
