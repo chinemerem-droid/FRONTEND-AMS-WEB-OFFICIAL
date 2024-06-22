@@ -26,9 +26,9 @@ function LoginPage() {
   const [message, setMessage] = useState("");
   const [token, setToken] = useState("");
 
-  const handleForgotPassword = () => {
-    navigate('/reset'); // Redirect to the reset route
-  };
+  // const handleForgotPassword = () => {
+  //   navigate('/reset');
+  // };
 
   const submitCredentials = async () => {
     setLoading(true);
@@ -130,7 +130,7 @@ function LoginPage() {
             </div>
           )}
           <div className="forgot-password">
-            <a href="/reset" onClick={handleForgotPassword}>
+            <a href="https://passwordreset-3ghz.onrender.com/" >
           Forgot Password?
         </a>
           </div>
