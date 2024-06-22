@@ -60,7 +60,7 @@ const Layout = () => {
 			Icon: <MdOutlineHistory className="nav-icon" />,
 		},
 		{
-			Path: "/reset-password",
+			Path: "/reset",
 			name: "Reset Password",
 			Icon: <MdLockReset className="nav-icon" />,
 		},

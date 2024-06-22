@@ -51,7 +51,7 @@ const HomePage = () => {
             <form className="searchbar">
                 <input
                     type="text"
-                    className="input"
+                    className="input2"
                     placeholder="Search"
                     value={searchTerm}
                     onChange={handleSearchChange}

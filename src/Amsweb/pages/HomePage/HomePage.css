@@ -1,12 +1,13 @@
 
 .searchbar {
+	padding-left: 1em;
+	padding-right: 1em;
 	border-radius: 5px;
-	border: none;
-  	display: flex;
-	background-color: #f0f0f0ed;
- 	height: 2em;
-	flex-direction: row;
-	width: 98%;
+    display: flex;
+    background-color: #f0f0f0ed;
+    height: 2em;
+    flex-direction: row;
+    width: 98%;
     margin-left: 5px;
 
 }
@@ -14,10 +15,11 @@
 #search-icon {
 
  	display: flex;
+	 margin-top: 7px;
 	justify-content: end;
 }
 
-.input {
+.input2 {
 	border: none;
 	background-color: transparent;
  	height: 100%;

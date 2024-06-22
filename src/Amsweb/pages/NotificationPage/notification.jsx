@@ -139,7 +139,7 @@ const Notification = () => {
         <>
             <ToastContainer />
             <div className="table-ccontainer">
-                <form className="searchbar">
+                <form className="searchbarNot">
                     <input type="text" className="input" placeholder="Search" />
                     <CiSearch id="search-icon" />
                 </form>

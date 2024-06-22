@@ -11,19 +11,19 @@
 	overflow: hidden;
 	margin-top: 3em;
 }
-.searchbar {
+.searchbarNot {
 	border-radius: 5px;
-	width: 70px;
+	width: 400px;
 	flex-direction: column;
 	border: 1px solid #f0f0f0ed;
 	align-items: center;
 	display: flex;
 	background-color: white;
-	width: 100%;
 	padding-left: 1em;
 	padding-right: 1em;
 	margin-top: 1.7em;
 	height: 30px;
+
 }
 #search-icon {
 	margin-left: 70px;
