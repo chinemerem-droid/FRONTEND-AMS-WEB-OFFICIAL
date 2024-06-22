@@ -96,7 +96,7 @@ function Managepeople() {
               <div className="scroll-container">
                 {filteredContacts.map((contact) => (
                   <div key={contact.id || Math.random()} className="scroll-item-container">
-                <td className="cells-staffID">
+                 <td className="cells-staffID">
                 <div className="staff-id-container"> {/* Added container div */}
                  <img  
                  src={randomImages[Math.floor(Math.random() * randomImages.length)]}
