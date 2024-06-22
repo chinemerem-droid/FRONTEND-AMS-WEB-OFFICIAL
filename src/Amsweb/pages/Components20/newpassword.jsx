@@ -56,7 +56,7 @@ const NewPassword = () => {
         setMessage(data.message || 'Failed to reset password.');
       }
     } catch (error) {
-      setMessage('An error occurred. Please try again later.');
+      setMessage('Invalid Email or Token');
       console.error('Error resetting password:', error);
     } finally {
       setIsLoading(false);
