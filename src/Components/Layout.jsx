@@ -87,9 +87,10 @@ const Layout = () => {
 		return () => clearInterval(intervalId);
 	}, []); // Empty dependency array to run the effect only once on mount
 
-	// Format the date and time
-	const formattedDateTime = currentDateTime.toLocaleString();
-	
+
+	const now = new Date();
+    const currentDate = now.toISOString().split('T')[0]; // YYYY-MM-DD
+    const currentTime = now.toTimeString().split(' ')[0];
 	return (
 		<>
 			<ToastContainer />
@@ -97,9 +98,13 @@ const Layout = () => {
 				<main className="main">
 					<div className="origial">
 						<header className="header">
+						
 							<p>
-								<img src={dateIcon} alt="" className="dateIcon" />{" "}
-								{formattedDateTime} <TbClockHour2 className="clockIcon" />
+								<img src={dateIcon} alt="" className="dateIcon" />
+								{" "}
+								{currentDate} 
+								<TbClockHour2 className="clockIcon" />
+								{currentTime}
 								
 							</p>
 
@@ -115,40 +120,7 @@ const Layout = () => {
 									<img src={userIcon} alt="" />
 								</div>
 							</div>
-							{showDropdown && (
-								<div className="userDropdown">
-									<div className="box">
-										<img
-											src={userIcon}
-											alt=""
-											style={{ position: "relative", width: "50px" }}
-										/>{" "}
-										<RxPencil1
-											style={{
-												position: "absolute",
-												top: "50px",
-												right: "8rem",
-												width: "20px",
-												height: "20px",
-												background: "#345782",
-												color: "white",
-												border: "1px solid white",
-												borderRadius: "50px",
-												padding: "3px",
-											}}
-										/>
-										<h4 style={{ paddingTop: "15px" }}>John Doe</h4>
-										<p className="center para">Super Administration</p>
-										<p
-											className="center"
-											style={{ color: "#345782", cursor: "pointer" }}
-											onClick={handlePasswordmodal}
-										>
-											<FiLock /> Passwords
-										</p>
-									</div>
-								</div>
-							)}
+						
 							{showPasswordModal && (
 								<div className="darkBG">
 									<div className="centered">

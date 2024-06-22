@@ -8,22 +8,34 @@ const HomePage = () => {
 
     useEffect(() => {
         const currentDate = new Date().toISOString().split('T')[0]; 
-        const apiUrl = `https://attsystem-latest.onrender.com/api/Attendance/AttendanceByDate?date=${currentDate}`;
-
-        fetch(apiUrl)
-            .then((response) => response.json())
-            .then((data) => {
-                const formattedData = data.map((item) => ({
-                    Name: item.staff_ID,
-                    staffID: item.staff_ID,
-                    CheckIn: item.entryTime,
-                    CheckOut: item.exitTime,
-                    // Date: item.date,
-                }));
-                setContacts(formattedData);
-            })
-            .catch((error) => console.error("Error fetching data: ", error));
+        const apiUrl = 'https://attsystem-latest.onrender.com/api/Attendance/AttendanceByDate';
+    
+        fetch(apiUrl, {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify({ date: currentDate })
+        })
+        .then((response) => {
+            if (!response.ok) {
+                throw new Error(`HTTP error! status: ${response.status}`);
+            }
+            return response.json();
+        })
+        .then((data) => {
+            const formattedData = data.map((item) => ({
+                Name: item.staff_ID,
+                staffID: item.staff_ID,
+                CheckIn: item.entryTime,
+                CheckOut: item.exitTime,
+                Date: item.date,
+            }));
+            setContacts(formattedData);
+        })
+        .catch((error) => console.error("Error fetching data: ", error));
     }, []);
+    
 
     const handleSearchChange = (e) => {
         setSearchTerm(e.target.value);
@@ -53,6 +65,7 @@ const HomePage = () => {
                         <th className="cell">Staff ID</th>
                         <th className="cell">Check In</th>
                         <th className="cell">Check Out</th>
+                        <th className="cell">Location</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -63,6 +76,7 @@ const HomePage = () => {
                                 <td className="cells-staffID">{contact.staffID}</td>
                                 <td className="cells-CheckIn">{contact.CheckIn}</td>
                                 <td className="cells-CheckOut">{contact.CheckOut}</td>
+                                <td className="cells-CheckOut">Digital Lab Innovation</td>
                             </tr>
                         ))
                     ) : (
