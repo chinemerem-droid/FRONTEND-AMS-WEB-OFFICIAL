@@ -4,6 +4,7 @@ import HorizontalScroll from "../../components/HorizontalScroll/HorizontalScroll
 import { CiSearch } from "react-icons/ci";
 import AddNewUser from "../AddNewUser/addNewUser";
 import { ToastContainer } from "react-toastify";
+import { FaUser } from 'react-icons/fa'; 
 const randomImages = [ // Array of image URLs
   "https://cdn-icons-png.flaticon.com/128/1507/1507155.png",
   "https://cdn-icons-png.flaticon.com/128/2632/2632839.png",
@@ -98,10 +99,7 @@ function Managepeople() {
                   <div key={contact.id || Math.random()} className="scroll-item-container">
                  <td className="cells-staffID">
                 <div className="staff-id-container"> {/* Added container div */}
-                 <img  
-                 src={randomImages[Math.floor(Math.random() * randomImages.length)]}
-                  alt="Random icon"
-                 className="staff-id-icon"/>
+                <FaUser className="staff-id-icon" />
                <span style={{ color: "green", fontWeight: "bold" }}>{contact.staffID}</span>
                </div>
                  </td>

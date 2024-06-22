@@ -3,6 +3,14 @@
   display: flex;
   flex-direction: column; /* Ensure content aligns vertically */
 }
+.staff-id-icon {
+  font-size:40px;       
+  color: #345782;         
+  align-items:flex-start;
+  padding: 8px;          
+  display: inline-block;  
+}
+
 
 .manage-people-header h1 {
   font-size: 21.7px;
@@ -10,22 +18,6 @@
   margin-bottom: 1em;
 }
 
-.scroll-child {
-  display: flex;
-  border-radius: 15px;
-  margin-bottom: 2em;
-}
-
-.scroll-child h2 {
-  font-weight: 500;
-  font-size: 23.03px;
-  color: var(--clr-primary);
-}
-
-.scroll-child h3 {
-  font-weight: 400;
-  font-size: 15.35px;
-}
 
 .info-and-search {
   background-color: var(--clr-third);
@@ -101,15 +93,16 @@
 }
 
 .staff-id-container {
-  display: flex; /* Arrange icon and text horizontally */
-  align-items: center; /* Align content vertically in the center */
+  display: flex; 
+  align-items: center;
+  margin-left: -20px;
+  /* width: 50%;  */
+}
+.scroll-child-1{
+  align-items: center;
+  margin-left: -20px;
 }
 
-.staff-id-icon {
-  width: 50px;
-  height: 50px;
-  margin-right: 5px; /* Add a small margin between icon and text */
-}
 
 
 .info-and-search-content h2 {
