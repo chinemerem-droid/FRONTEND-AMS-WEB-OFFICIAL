@@ -134,16 +134,30 @@ function AddNewUser() {
           </div>
           <div className="inputs">
             <div className="image-div">
-              <FaEnvelope className="input-icon" />
+              <FaIdCard className="input-icon" />
             </div>
             <div className="input-div">
               <input
+              type="text"
+              placeholder="Staff ID"
+              value={staffID}
+              onChange={(e) => setStaffID(e.target.value)}
+             
+              />
+            </div>
+          </div>
+        </div>
+        <div className="inputs">
+          <div className="image-div">
+            <FaEnvelope className="input-icon" />
+          </div>
+          <div className="input-div">
+            <input
                 type="text"
                 placeholder="Email"
                 value={email}
                 onChange={(e) => setEmail(e.target.value)}
-              />
-            </div>
+            />
           </div>
         </div>
         <div className="inputs">
@@ -152,23 +166,10 @@ function AddNewUser() {
           </div>
           <div className="input-div">
             <input
-              type="text"
-              placeholder="Phone Number"
-              value={phoneNumber}
-              onChange={(e) => setPhoneNumber(e.target.value)}
-            />
-          </div>
-        </div>
-        <div className="inputs">
-          <div className="image-div">
-            <FaIdCard className="input-icon" />
-          </div>
-          <div className="input-div">
-            <input
-              type="text"
-              placeholder="Staff ID"
-              value={staffID}
-              onChange={(e) => setStaffID(e.target.value)}
+               type="text"
+               placeholder="Phone Number"
+               value={phoneNumber}
+               onChange={(e) => setPhoneNumber(e.target.value)}
             />
           </div>
         </div>
