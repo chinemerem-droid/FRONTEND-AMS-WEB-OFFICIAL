@@ -120,7 +120,7 @@ const Notification = () => {
 			const response = await axios.post(
 				"https://attsystem-latest.onrender.com/api/User/RemoveUser",
 				{
-					data: { Staff_ID: staffId },
+					Staff_ID: staffID,
 				}
 			);
 			console.log(response.data);
