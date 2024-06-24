@@ -184,6 +184,7 @@ const Layout = () => {
 								<Outlet />
 							</div>
 						</div>
+						
 					</div>
 				</main>
 			) : (
