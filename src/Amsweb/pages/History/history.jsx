@@ -172,118 +172,119 @@ const History = () => {
   return (
     <>
       {/* <div className="table-container-history"> */}
-      <div className="switch-button">
-        <div
-          onClick={showattendancecontent}
-          className={
-            showHistory
-              ? "attendance-history attendance-history-background"
-              : "attendance-history"
-          }
-        >
-          <div className="attendance-history-content">Attendance History</div>
+      <div className="table-ccontainer">
+        <div className="switch-button">
+          <div
+            onClick={showattendancecontent}
+            className={
+              showHistory
+                ? "attendance-history attendance-history-background"
+                : "attendance-history"
+            }
+          >
+            <div className="attendance-history-content">Attendance History</div>
+          </div>
+          <div
+            className={
+              showHistoryApproval
+                ? "approval-history approval-history-background"
+                : "approval-history"
+            }
+            onClick={HandleHistoryApproval}
+          >
+            <div className="approval-history-content">Approval History</div>
+          </div>
         </div>
-        <div
-          className={
-            showHistoryApproval
-              ? "approval-history approval-history-background"
-              : "approval-history"
-          }
-          onClick={HandleHistoryApproval}
-        >
-          <div className="approval-history-content">Approval History</div>
-        </div>
-      </div>
 
-      <div className="content">
-        {showHistory && (
-          <>
-            <div className="search-container">
-              <input
-                type="text"
-                placeholder="Search..."
-                className="search-bar"
-                value={search}
-                onChange={(e) => setSearch(e.target.value)}
-              />
-              <div class="dropdown">
-                <button class="dropdown-button">
-                  Last Month <span class="icon">&#9662;</span>
-                </button>
-                <div class="dropdown-content">
-                  <a href="#" onClick={() => setDay("Last Month")}>
-                    Last Month
-                  </a>
-                  <a href="#" onClick={() => setDay("Last Week")}>
-                    Last week
-                  </a>
-                  <a href="#" onClick={() => setDay("Last 5Days")}>
-                    Last 5 days
-                  </a>
+        <div className="content">
+          {showHistory && (
+            <>
+              <div className="search-container">
+                <input
+                  type="text"
+                  placeholder="Search..."
+                  className="search-bar"
+                  value={search}
+                  onChange={(e) => setSearch(e.target.value)}
+                />
+                <div class="dropdown">
+                  <button class="dropdown-button">
+                    Last Month <span class="icon">&#9662;</span>
+                  </button>
+                  <div class="dropdown-content">
+                    <a href="#" onClick={() => setDay("Last Month")}>
+                      Last Month
+                    </a>
+                    <a href="#" onClick={() => setDay("Last Week")}>
+                      Last week
+                    </a>
+                    <a href="#" onClick={() => setDay("Last 5Days")}>
+                      Last 5 days
+                    </a>
+                  </div>
                 </div>
               </div>
-            </div>
-            <table>
-              <thead>
-                <tr>
-                  <th>Day</th>
-                  <th>Name</th>
-                  <th>Staff ID</th>
-                  <th>Check in</th>
-                  <th>Check out</th>
-                </tr>
-              </thead>
-              <tbody>
-                {filterbyDate &&
-                  filterbyDate.map((res, index) => (
-                    <tr key={index}>
-                      <td>{formatDate(res.date)}</td>
-                      <td>{res.staff_ID}</td>
-                      <td>{res.staff_ID}</td>
-                      <td>{res.entryTime}</td>
-                      <td>{res.exitTime}</td>
-                    </tr>
+              <table>
+                <thead>
+                  <tr>
+                    <th>Day</th>
+                    <th>Name</th>
+                    <th>Staff ID</th>
+                    <th>Check in</th>
+                    <th>Check out</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  {filterbyDate &&
+                    filterbyDate.map((res, index) => (
+                      <tr key={index}>
+                        <td>{formatDate(res.date)}</td>
+                        <td>{res.staff_ID}</td>
+                        <td>{res.staff_ID}</td>
+                        <td>{res.entryTime}</td>
+                        <td>{res.exitTime}</td>
+                      </tr>
+                    ))}
+                </tbody>
+              </table>
+            </>
+          )}
+
+          {showHistoryApproval && (
+            <>
+              <div className="search-container">
+                <input
+                  type="text"
+                  placeholder="Search..."
+                  className="search-bar"
+                  value={search}
+                  onChange={(e) => setSearch(e.target.value)}
+                />
+                <div class="dropdown">
+                  <button class="dropdown-button">
+                    Last Month <span class="icon">&#9662;</span>
+                  </button>
+                  <div class="dropdown-content">
+                    <a href="#">Last Month</a>
+                    <a href="#">Last week</a>
+                    <a href="#">Last 5 days</a>
+                  </div>
+                </div>
+              </div>
+              <div className="notification-list">
+                {notifications &&
+                  notifications.map((n, i) => (
+                    <NotificationBar
+                      key={i}
+                      text={n.text}
+                      onDelete={() => handleDelete(n.id)}
+                    />
                   ))}
-              </tbody>
-            </table>
-          </>
-        )}
-
-        {showHistoryApproval && (
-          <>
-            <div className="search-container">
-              <input
-                type="text"
-                placeholder="Search..."
-                className="search-bar"
-                value={search}
-                onChange={(e) => setSearch(e.target.value)}
-              />
-              <div class="dropdown">
-                <button class="dropdown-button">
-                  Last Month <span class="icon">&#9662;</span>
-                </button>
-                <div class="dropdown-content">
-                  <a href="#">Last Month</a>
-                  <a href="#">Last week</a>
-                  <a href="#">Last 5 days</a>
-                </div>
               </div>
-            </div>
-            <div className="notification-list">
-              {notifications &&
-                notifications.map((n, i) => (
-                  <NotificationBar
-                    key={i}
-                    text={n.text}
-                    onDelete={() => handleDelete(n.id)}
-                  />
-                ))}
-            </div>
-          </>
-        )}
+            </>
+          )}
+        </div>
       </div>
-
       {/* </div> */}
     </>
   );
