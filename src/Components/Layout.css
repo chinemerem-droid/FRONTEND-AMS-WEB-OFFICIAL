@@ -14,14 +14,13 @@
 	align-items: center;
 	background-color: #fff;
 	height: 69px;
-	padding: 0 52px;
 	margin-top: 0px auto;
 	border: 1px solid #c2c2c2;
 	position: relative;
 
 	/* position: absolute; */
 }
-.clockIcon{
+.clockIcon {
 	margin: -2px 3px -2px 10px;
 }
 
@@ -44,8 +43,7 @@
 }
 
 .userIcon {
-	display: flex;
-	/* margin-right: 20px; */
+	margin: 0px auto;
 
 	/* position: relative; */
 }
@@ -98,13 +96,11 @@ main {
 	transition: all 0.5s;
 }
 
-
 .nav-icon {
 	width: 2em;
 	color: #000000b2;
 	background-color: #fff;
 }
-
 
 .arrow {
 	padding: 15px 10px;
@@ -178,18 +174,18 @@ tr:nth-child(even) {
 	overflow: scroll;
 	width: 100%;
 }
-.icon{
+.icon {
 	margin-top: 4px;
 }
-.icon2{
+.icon2 {
 	margin-top: 2px;
 }
-.link_text{
- text-decoration: none;
+.link_text {
+	text-decoration: none;
 }
 .logOutIcon {
-	margin-top: 15em;
-	margin-bottom: 50px;
+	margin-top: 5em;
+	text-decoration: none;
 	height: 24px;
 	padding: 4px 6px 3px 4px;
 	gap: 10px;
@@ -200,8 +196,8 @@ tr:nth-child(even) {
 	width: 9%;
 	margin: 0px 4px -7.5px 10px;
 }
-.time-info{
-	width:320px;
+.time-info {
+	width: 320px;
 }
 
 .userDropdown {
@@ -328,4 +324,15 @@ tr:nth-child(even) {
 }
 .top h4 {
 	margin-top: 2em;
+}
+.time-info {
+	margin: 36px;
+	margin-top: 24px;
+	margin-bottom: 24px;
+}
+.borderline {
+	margin-left: 10px;
+	margin-right: 20px;
+	margin-top: 5em;
+	border: 0.5px solid #000000;
 }

@@ -1,23 +1,20 @@
-
 .searchbar {
 	padding-left: 1em;
 	padding-right: 1em;
 	border-radius: 5px;
-    display: flex;
-    background-color: #fff;
+	display: flex;
+	background-color: #fff;
 	border: 1px solid grey;
-    height: 2em;
+	height: 2em;
 	margin-top: 20px;
-    flex-direction: row;
+	flex-direction: row;
 	outline: none;
-    width: 98%;
-    margin-left: 5px;
-
+	width: 98%;
+	margin-left: 5px;
 }
 
 #search-icon {
-
- 	display: flex;
+	display: flex;
 	margin-top: 7px;
 	justify-content: end;
 }
@@ -25,12 +22,11 @@
 .input2 {
 	border: none;
 	background-color: transparent;
- 	height: 100%;
+	height: 100%;
 	font-size: 15px;
 	width: 90%;
 	outline: none;
-	
- }
+}
 
 .input:focus {
 	outline: none;
@@ -62,7 +58,7 @@ tr:nth-child(even) {
 .table-container {
 	border: 2px;
 	background: white;
-	margin:0% 5%;;
+	margin: 0% 5%;
 	height: 100%;
 	border-radius: 10px;
 	padding-top: 5px;
@@ -71,12 +67,10 @@ tr:nth-child(even) {
 	overflow: hidden;
 	margin-top: 3em;
 }
-.searchbar{
-
+.searchbar {
 }
 
-
-.logOutIcon {
+/* .logOutIcon {
 	margin-top: 15em;
 	text-decoration: none;
 	height: 24px;
@@ -84,16 +78,16 @@ tr:nth-child(even) {
 	gap: 10px;
 	opacity: 0.7px;
 	color: rgb(164, 12, 12);
-}
+} */
 .user-icon {
-	font-size: 35px;        
-	color: #345782;       
-	background-color: #ccc; 
-	border-radius: 50%;   
-	padding: 8px;          
+	font-size: 35px;
+	color: #345782;
+	background-color: #ccc;
+	border-radius: 50%;
+	padding: 8px;
 	display: inline-block;
-  }
-  
+}
+
 table,
 th,
 td {
@@ -104,8 +98,12 @@ table {
 	width: 100%;
 	border-spacing: 0 10px;
 	padding-right: 17px;
-    padding-left: revert-layer;
+	padding-left: revert-layer;
 }
+.thead {
+	border: 2px solid blue;
+}
+
 thead tr {
 	background-color: #e3effd;
 }
@@ -114,7 +112,7 @@ th {
 	font-weight: 700;
 	text-align: left;
 }
-.cells-icon{
+.cells-icon {
 	text-align: right;
 }
 
@@ -127,22 +125,31 @@ th {
 .cells-CheckIn {
 	color: #345782;
 }
+
 .cells-CheckOut {
 	color: #345782;
 }
+
 .cells-location {
 	color: #000000;
 }
-.tbody {
-	padding-left: 10px;
+.ttable {
+	width: 100%;
 }
-.CheckIn{
-
-
+.tBodyContainer {
+	padding-left: 50em;
+	border: 1px solid green;
+	width: 300px;
 }
-.Check{
+
+ 
+.Check {
 	margin-bottom: 1em;
 }
-.name{
+
+.name {
 	margin-bottom: 1em;
+}
+.time-info{
+
 }

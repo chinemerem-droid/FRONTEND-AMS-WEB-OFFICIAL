@@ -167,6 +167,9 @@ const Layout = () => {
 										{isOpen && <div className="link_text">{item.name}</div>}
 									</NavLink>
 								))}
+								<div className="borderline">
+									
+								</div>
 								<NavLink
 									to={"#"}
 									className="logOutIcon"
