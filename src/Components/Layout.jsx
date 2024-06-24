@@ -92,8 +92,16 @@ const Layout = () => {
 
 
 	const now = new Date();
-    const currentDate = now.toISOString().split('T')[0]; // YYYY-MM-DD
-    const currentTime = now.toTimeString().split(' ')[0];
+	
+
+	// Get the parts of the date
+	const weekday = now.toLocaleDateString('en-US', { weekday: 'long' });
+	const day = now.getDate();
+	const month = now.toLocaleDateString('en-US', { month: 'long' });
+	const year = now.getFullYear();
+	const currentDate = `${weekday}, ${month} ${day}, ${year}`;
+	const options = { hour: 'numeric', minute: 'numeric', hour12: true };
+	const currentTime = now.toLocaleTimeString('en-US', options);
 	return (
 		<>
 			<ToastContainer />
@@ -102,7 +110,7 @@ const Layout = () => {
 					<div className="origial">
 						<header className="header">
 						
-							<p>
+							<p className="time-info">
 								<img src={dateIcon} alt="" className="dateIcon" />
 								{" "}
 								{currentDate} 

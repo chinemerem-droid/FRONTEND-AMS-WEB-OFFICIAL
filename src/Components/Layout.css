@@ -198,7 +198,10 @@ tr:nth-child(even) {
 }
 .dateIcon {
 	width: 9%;
-	margin: 0px 4px -3.5px 10px;
+	margin: 0px 4px -7.5px 10px;
+}
+.time-info{
+	width:320px;
 }
 
 .userDropdown {
