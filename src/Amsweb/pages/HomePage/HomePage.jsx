@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import { CiSearch } from "react-icons/ci";
 import "./HomePage.css";
 import { FaUser } from 'react-icons/fa';
+import CheckIn from "../../../images/check in .svg"
 
 const HomePage = () => {
     const [contacts, setContacts] = useState([]);
@@ -83,9 +84,13 @@ const HomePage = () => {
                             </tr>
                         ))
                     ) : (
-                        <tr>
-                            <td colSpan="4" style={{ textAlign: 'center' }}>No information available</td>
-                        </tr>
+                        <div className="CheckIn">
+                       
+                             <img src={CheckIn} alt="" className="Check"/>
+                             <h2 className="name"> No Check ins </h2>
+                          <p> No one has checked in yet today</p> 
+                       
+                        </div>
                     )}
                 </tbody>
             </table>

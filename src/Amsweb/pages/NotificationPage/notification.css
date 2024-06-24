@@ -16,12 +16,13 @@
 	padding-right: 1em;
 	border-radius: 5px;
     display: flex;
-    background-color: #f0f0f0ed;
+    background-color: #fff;
     height: 2em;
     flex-direction: row;
     width: 98%;
     margin-left: 5px;
 	margin-top: 20px;
+	border: 1px solid grey;
 
 }
 #search-icon {

@@ -4,7 +4,8 @@
 	padding-right: 1em;
 	border-radius: 5px;
     display: flex;
-    background-color: #f0f0f0ed;
+    background-color: #fff;
+	border: 1px solid grey;
     height: 2em;
 	margin-top: 20px;
     flex-direction: row;
@@ -25,9 +26,10 @@
 	border: none;
 	background-color: transparent;
  	height: 100%;
-	font-size: 1rem;
+	font-size: 15px;
 	width: 90%;
 	outline: none;
+	
  }
 
 .input:focus {
@@ -61,7 +63,7 @@ tr:nth-child(even) {
 	border: 2px;
 	background: white;
 	margin:0% 5%;;
-
+	height: 100%;
 	border-radius: 10px;
 	padding-top: 5px;
 	padding-left: 40px;
@@ -69,6 +71,10 @@ tr:nth-child(even) {
 	overflow: hidden;
 	margin-top: 3em;
 }
+.searchbar{
+
+}
+
 
 .logOutIcon {
 	margin-top: 15em;
@@ -129,4 +135,14 @@ th {
 }
 .tbody {
 	padding-left: 10px;
+}
+.CheckIn{
+
+
+}
+.Check{
+	margin-bottom: 1em;
+}
+.name{
+	margin-bottom: 1em;
 }
