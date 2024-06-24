@@ -169,9 +169,7 @@ const Layout = () => {
 								))}
 								<NavLink
 									to={"#"}
-									className="logOutIcon"
-									// activeClassName="acive"
-									style={{ display: "flex" }}
+									className="logOutIcon2"
 									onClick={handleLogout}
 								>
 									<div className="icon2">
