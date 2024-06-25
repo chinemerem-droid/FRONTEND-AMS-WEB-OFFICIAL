@@ -1,14 +1,19 @@
 import React, { useState } from "react";
 import "./addNewUser.css";
-import { toast } from "react-toastify";
+import { toast, ToastContainer, Slide } from "react-toastify";
+import 'react-toastify/dist/ReactToastify.css';
 import { FaUserAlt, FaEnvelope, FaPhone, FaIdCard } from "react-icons/fa";
 
-
 function AddNewUser() {
-  const notifySuccess = (message) => toast.success(message);
-  const notifyError = (message) => toast.error(message);
+
+  const notifySuccess = () => toast("Success");
+
+  const notifyError = () => console.log("error");
+
+
   const handleEvent = () => {
-    window.location.reload(); };
+    window.location.reload();
+  };
 
   const roleID = sessionStorage.getItem('roleID');
   const nameID = sessionStorage.getItem('nameID');
@@ -28,7 +33,7 @@ function AddNewUser() {
   const handleFormSubmit = () => {
     setShowPasswordPopup(true);
   };
-  
+
   const handlePasswordConfirmation = () => {
     fetch("https://attsystem-latest.onrender.com/api/User/Confirmpassword", {
       method: "POST",
@@ -47,7 +52,7 @@ function AddNewUser() {
             staff_ID: staffID,
             lab_role: labRole,
           };
-  
+
           fetch("https://attsystem-latest.onrender.com/api/User/AddUser", {
             method: "POST",
             headers: {
@@ -59,7 +64,7 @@ function AddNewUser() {
             .then(({ status, text }) => {
               if (status === 200) {
                 notifySuccess("User added successfully");
-  
+
                 if (roleID === "A1") {
                   fetch("https://attsystem-latest.onrender.com/api/User/Approve", {
                     method: "POST",
@@ -68,17 +73,18 @@ function AddNewUser() {
                     },
                     body: JSON.stringify({ Staff_ID: newUser.staff_ID }),
                   })
-                    .then(response => response.text().then(text => ({ status: response.status, text })))
-                    .then(({ status, text }) => {
-                      if (status === 200) {
-                        notifySuccess("User approved successfully");
-                      } else {
-                        notifyError("Failed to approve user: " + text);
-                      }
-                    })
-                    .catch(error => {
-                      notifyError("Failed to approve user: " + error.message);
-                    });
+                  .then((resp)=> console.log(resp.text()))
+                    // .then(response => response.text().then(text => ({ status: response.status, text })))
+                    // .then(({ status, text }) => {
+                    //   if (status === 200) {
+                    //     notifySuccess("User approved successfully");
+                    //   } else {
+                    //     notifyError("Failed to approve user: " + text);
+                    //   }
+                    // })
+                    // .catch(error => {
+                    //   notifyError("Failed to approve user: " + error.message);
+                    // });
                 } else if (roleID === "B2") {
                   notifySuccess("Request sent");
                 }
@@ -110,6 +116,7 @@ function AddNewUser() {
 
   return (
     <div className="table-container-2">
+      <ToastContainer transition={Slide} />
       <div>
         <div className="header-text">
           <h1>{buttonText}</h1>
@@ -137,11 +144,10 @@ function AddNewUser() {
             </div>
             <div className="input-div">
               <input
-              type="text"
-              placeholder="Staff ID"
-              value={staffID}
-              onChange={(e) => setStaffID(e.target.value)}
-             
+                type="text"
+                placeholder="Staff ID"
+                value={staffID}
+                onChange={(e) => setStaffID(e.target.value)}
               />
             </div>
           </div>
@@ -152,10 +158,10 @@ function AddNewUser() {
           </div>
           <div className="input-div">
             <input
-                type="text"
-                placeholder="Email"
-                value={email}
-                onChange={(e) => setEmail(e.target.value)}
+              type="text"
+              placeholder="Email"
+              value={email}
+              onChange={(e) => setEmail(e.target.value)}
             />
           </div>
         </div>
@@ -165,10 +171,10 @@ function AddNewUser() {
           </div>
           <div className="input-div">
             <input
-               type="text"
-               placeholder="Phone Number"
-               value={phoneNumber}
-               onChange={(e) => setPhoneNumber(e.target.value)}
+              type="text"
+              placeholder="Phone Number"
+              value={phoneNumber}
+              onChange={(e) => setPhoneNumber(e.target.value)}
             />
           </div>
         </div>

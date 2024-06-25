@@ -20,6 +20,7 @@ import End from "../images/End.svg";
 import axios from "axios";
 import { ToastContainer, toast } from "react-toastify";
 import { RoleProvider } from "../RoleContext";
+import { FaUser } from 'react-icons/fa'; 
 
 const Layout = () => {
 	const navigate = useNavigate();
@@ -159,7 +160,7 @@ const Layout = () => {
 									<p className="firstpara">{iconText}</p>
 								</div>
 								<div className="usericon">
-									<img src={userIcon} alt="" />
+								<FaUser className="staff-id-icon" />
 								</div>	
 							</div>
 						</header>
