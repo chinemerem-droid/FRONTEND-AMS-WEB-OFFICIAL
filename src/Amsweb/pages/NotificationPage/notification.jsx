@@ -48,12 +48,39 @@ const Notification = () => {
 	const HandleSeemore = () => {
 		setshowSeemore(true);
 	};
+	// useEffect(() => {
+	// 	fetch("https://attsystem-latest.onrender.com/api/User/GetNotification")
+	// 		.then((response) => response.json())
+	// 		.then((data) => {
+	// 			// Map the message to the sen property of each notification object
+	// 			const notificationsWithSen = data.map((notification) => ({
+	// 				Staff_ID: notification.staff_ID,
+	// 				sen: notification.message,
+	// 				sen1: notification.sen1,
+	// 				sen2: notification.sen2,
+	// 				sen3: notification.sen3,
+	// 				sen4: notification.sen4,
+	// 			}));
+	// 			setNotification(notificationsWithSen);
+	// 			if (notificationsWithSen.length > 0) {
+	// 				setStaffId(notificationsWithSen[0].Staff_ID); // Assuming you want the first Staff_ID
+	// 			}
+	// 		})
+	// 		.catch((error) => console.error("Error fetching notification:", error));
+	// }, []);
 	useEffect(() => {
+		// Fetch notifications from API
 		fetch("https://attsystem-latest.onrender.com/api/User/GetNotification")
 			.then((response) => response.json())
 			.then((data) => {
+				// Assuming RoleID is stored in session storage as 'roleID'
+				const roleId = sessionStorage.getItem('roleID');
+	
+				// Filter notifications based on RoleID and isRead === false
+				const filteredNotifications = data.filter((notification) => notification.roleID === roleId && !notification.isRead);
+	
 				// Map the message to the sen property of each notification object
-				const notificationsWithSen = data.map((notification) => ({
+				const notificationsWithSen = filteredNotifications.map((notification) => ({
 					Staff_ID: notification.staff_ID,
 					sen: notification.message,
 					sen1: notification.sen1,
@@ -61,13 +88,17 @@ const Notification = () => {
 					sen3: notification.sen3,
 					sen4: notification.sen4,
 				}));
+	
 				setNotification(notificationsWithSen);
+	
 				if (notificationsWithSen.length > 0) {
 					setStaffId(notificationsWithSen[0].Staff_ID); // Assuming you want the first Staff_ID
 				}
 			})
 			.catch((error) => console.error("Error fetching notification:", error));
 	}, []);
+	
+	
 
 	const handleSubmitpassword = async () => {
 		try {
@@ -100,6 +131,33 @@ const Notification = () => {
 				setPassword("");
 				setshowApprove(false);
 				setPassword("");
+				fetch("https://attsystem-latest.onrender.com/api/User/GetNotification")
+				.then((response) => response.json())
+				.then((data) => {
+					// Assuming RoleID is stored in session storage as 'roleID'
+					const roleId = sessionStorage.getItem('roleID');
+		
+					// Filter notifications based on RoleID and isRead === false
+					const filteredNotifications = data.filter((notification) => notification.roleID === roleId && !notification.isRead);
+		
+					// Map the message to the sen property of each notification object
+					const notificationsWithSen = filteredNotifications.map((notification) => ({
+						Staff_ID: notification.staff_ID,
+						sen: notification.message,
+						sen1: notification.sen1,
+						sen2: notification.sen2,
+						sen3: notification.sen3,
+						sen4: notification.sen4,
+					}));
+		
+					setNotification(notificationsWithSen);
+		
+					if (notificationsWithSen.length > 0) {
+						setStaffId(notificationsWithSen[0].Staff_ID); // Assuming you want the first Staff_ID
+					}
+				})
+				.catch((error) => console.error("Error fetching notification:", error));
+				
 			} else {
 				toast.error("Invalid password");
 			}
@@ -118,7 +176,7 @@ const Notification = () => {
 	const handleDenyUser = async () => {
 		try {
 			const response = await axios.post(
-				"https://attsystem-latest.onrender.com/api/User/RemoveUser",
+				"https://attsystem-latest.onrender.com/api/User/DenyUser",
 				{
 					Staff_ID: staffID,
 				}
@@ -126,6 +184,32 @@ const Notification = () => {
 			console.log(response.data);
 			// Handle success
 			toast.success("User removed successfully");
+			fetch("https://attsystem-latest.onrender.com/api/User/GetNotification")
+				.then((response) => response.json())
+				.then((data) => {
+					// Assuming RoleID is stored in session storage as 'roleID'
+					const roleId = sessionStorage.getItem('roleID');
+		
+					// Filter notifications based on RoleID and isRead === false
+					const filteredNotifications = data.filter((notification) => notification.roleID === roleId && !notification.isRead);
+		
+					// Map the message to the sen property of each notification object
+					const notificationsWithSen = filteredNotifications.map((notification) => ({
+						Staff_ID: notification.staff_ID,
+						sen: notification.message,
+						sen1: notification.sen1,
+						sen2: notification.sen2,
+						sen3: notification.sen3,
+						sen4: notification.sen4,
+					}));
+		
+					setNotification(notificationsWithSen);
+		
+					if (notificationsWithSen.length > 0) {
+						setStaffId(notificationsWithSen[0].Staff_ID); // Assuming you want the first Staff_ID
+					}
+				})
+				.catch((error) => console.error("Error fetching notification:", error));
 		} catch (error) {
 			console.error("Error removing user:", error);
 			// Handle error, e.g., show an error message
