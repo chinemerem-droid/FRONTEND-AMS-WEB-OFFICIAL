@@ -55,6 +55,8 @@ function LoginPage() {
 
       sessionStorage.setItem("roleID", roleID);
       sessionStorage.setItem("nameID", nameID);
+    
+
 
       console.log(`Staff_ID: ${nameID}`);
       navigate("/home");
@@ -119,6 +121,11 @@ function LoginPage() {
               )}
             </div>
           </div>
+          <div className="forgot-password">
+            <a href="https://passwordreset-3ghz.onrender.com/" >
+          Forgot Password
+        </a>
+          </div>
           {loading ? (
             <div className="button-con2">
               <button disabled>
@@ -130,11 +137,7 @@ function LoginPage() {
               <button onClick={submitCredentials}>Login</button>
             </div>
           )}
-          <div className="forgot-password">
-            <a href="https://passwordreset-3ghz.onrender.com/" >
-          Forgot Password?
-        </a>
-          </div>
+         
         </div>
       </div>
     </>

@@ -22,9 +22,13 @@ const Notification = () => {
 	const [showSeemore, setshowSeemore] = useState(false);
 	const [notificationData, setNotification] = useState([]);
 	const [staffID, setStaffId] = useState(null);
-	// const [Token, setToken] = useState(false);
+	const [searchTerm, setSearchTerm] = useState("");
 
 	const token = sessionStorage.getItem("token");
+	const roleID = sessionStorage.getItem("roleID")
+		? sessionStorage.getItem("roleID")
+		: null;
+	console.log("roleID", roleID);
 	const staffId = jwtDecode(token).nameid;
 	console.log(staffId);
 
@@ -32,14 +36,14 @@ const Notification = () => {
 		console.log("pressed");
 		setshowApprove(true);
 	};
-	// const [step, setStep] = useState(1);
-	// const HandleNext = () => {
-	// 	setStep((prev) => prev + 1);
-	// };
 	const HandleClose = () => {
 		setshowApprove(false);
 		setshowSeemore(false);
 	};
+	const handleSearchChange = (e) => {
+		setSearchTerm(e.target.value);
+	};
+	
 
 	const HandleSeemore = () => {
 		setshowSeemore(true);
@@ -50,7 +54,7 @@ const Notification = () => {
 			.then((data) => {
 				// Map the message to the sen property of each notification object
 				const notificationsWithSen = data.map((notification) => ({
-					Staff_ID:notification.staff_ID,
+					Staff_ID: notification.staff_ID,
 					sen: notification.message,
 					sen1: notification.sen1,
 					sen2: notification.sen2,
@@ -65,7 +69,6 @@ const Notification = () => {
 			.catch((error) => console.error("Error fetching notification:", error));
 	}, []);
 
-
 	const handleSubmitpassword = async () => {
 		try {
 			const response = await axios.post(
@@ -78,24 +81,23 @@ const Notification = () => {
 			if (response.status === 200) {
 				// Password confirmed successfully
 				toast.success("Password confirmed successfully");
-	
+
 				const approveResponse = await axios.post(
 					"https://attsystem-latest.onrender.com/api/User/Approve", // Change this URL to your actual approval endpoint
 					{
 						Staff_ID: staffID,
 					}
 				);
-		
-					if (approveResponse.status === 200) {
-						// User approved successfully
-						toast.success("User approved successfully");
-					} else {
-						toast.error("Failed to approve user");
-					}
 
+				if (approveResponse.status === 200) {
+					// User approved successfully
+					toast.success("User approved successfully");
+				} else {
+					toast.error("Failed to approve user");
+				}
 
-            setshowApprove(false);
-            setPassword("");
+				setshowApprove(false);
+				setPassword("");
 				setshowApprove(false);
 				setPassword("");
 			} else {
@@ -112,9 +114,7 @@ const Notification = () => {
 			}
 		}
 	};
-	
 
-	
 	const handleDenyUser = async () => {
 		try {
 			const response = await axios.post(
@@ -132,46 +132,62 @@ const Notification = () => {
 			toast.error("Failed to remove user");
 		}
 	};
+	console.log(notificationData)
+	const filteredNotification = notificationData.filter((n) =>
+		n.Staff_ID.toLowerCase().includes(searchTerm.toLowerCase())
+	);
 
-
+	
 
 	return (
-        <>
-            <ToastContainer />
-            <div className="table-ccontainer">
-                <form className="searchbarNot">
-                    <input type="text" className="input4" placeholder="Search" />
-                    <CiSearch id="search-icon" />
-                </form>
+		<>
+			<ToastContainer />
+			<div className="table-ccontainer">
+				<form className="searchbarNot">
+					<input
+						type="text"
+						className="input4"
+						placeholder="Search"
+						value={searchTerm}
+						onChange={handleSearchChange}
+					/>
+					<CiSearch id="search-icon" />
+				</form>
 
-                {notificationData.length > 0 ? (
-                    <table>
-                        <tbody>
-                            {notificationData.map((notification, index) => (
-                                <tr key={index}>
-                                    <td
-                                        style={{ fontWeight: 'bold', fontSize: 'larger' }}
-                                        dangerouslySetInnerHTML={{ __html: notification.sen }}
-                                    ></td>
-                                    <td>
-                                        <button className="sen1" onClick={HandleSeemore}>
-                                            See More
-                                        </button>
-                                    </td>
-                                    <td className="sen2">Today</td>
-                                    <td className="sen3">
-                                        <button onClick={handleApprove}>Approve</button>
-                                    </td>
-                                    <td className="sen4">
-                                        <button onClick={handleDenyUser}>Deny</button>
-                                    </td>
-                                </tr>
-                            ))}
-                        </tbody>
-                    </table>
-                ) : (
-                    <p style={{ textAlign: 'center', marginTop: '20px' }}>No information available</p>
-                )}
+				{notificationData.length > 0 ? (
+					<table>
+						<tbody>
+							{filteredNotification.map((notification, index) => (
+								<tr key={index}>
+									<td
+										style={{ fontWeight: "bold", fontSize: "larger" }}
+										// dangerouslySetInnerHTML={{ __html: notification.sen }}
+									>
+										{notification.sen}
+									</td>
+									<td>
+										
+									</td>
+									<td className="sen2">Today</td>
+									{roleID && roleID == "A1" && (
+										<>
+											<td className="sen3">
+												<button onClick={handleApprove}>Approve</button>
+											</td>
+											<td className="sen4">
+												<button onClick={handleDenyUser}>Deny</button>
+											</td>
+										</>
+									)}
+								</tr>
+							))}
+						</tbody>
+					</table>
+				) : (
+					<p style={{ textAlign: "center", marginTop: "20px" }}>
+						No information available
+					</p>
+				)}
 
 				{showApprove && (
 					<div className="darkBGModal">
@@ -278,7 +294,7 @@ const Notification = () => {
 										onClick={HandleClose}
 									/>
 									<div className="password-box"></div>
-									<h2>hwfar</h2>
+									<h2>See More</h2>
 								</div>
 							</div>
 						</div>

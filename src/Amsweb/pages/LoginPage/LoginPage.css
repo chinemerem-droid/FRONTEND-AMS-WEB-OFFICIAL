@@ -4,6 +4,8 @@
 	cursor: pointer;
 	height: 100vh;
 	overflow: hidden;
+	top: 50%;
+	left: 50%;
 }
 .container1 {
 	padding: 100px;
@@ -14,9 +16,12 @@
 	background-color: #e3effd;
 }
 .container2 img {
+	min-width: 70%;
+	max-width: 50%;
 	width: 70%;
 	margin: 180px auto;
 	padding-left: 25%;
+
 	background-color: #e3effd;
 }
 .container1 h1 {
@@ -53,7 +58,7 @@
 .input-div input {
 	border: none;
 	outline: none;
-	padding: 10px 15px;
+	padding: 5px 30px;
 	width: 100%;
 	font-size: 18px;
 }
@@ -73,6 +78,7 @@
 	border: none;
 	padding: 10px 20px;
 	width: 273px;
+	height: 53px;
 	display: flex;
 	flex-direction: row;
 	justify-content: center;
@@ -93,7 +99,6 @@
 	border: none;
 	padding: 10px 20px;
 	width: 273px;
-	
 }
 .button-con {
 	margin-top: 20px;
@@ -102,4 +107,10 @@
 	position: absolute;
 	top: 15px;
 	color: #ccc;
+}
+.forgot-password a{
+	text-decoration: none;
+	color: #345782 ;
+	font-size: 15px;
+	line-height: 24.91px;
 }
