@@ -19,6 +19,7 @@ import { FaEye, FaEyeSlash } from "react-icons/fa";
 import End from "../images/End.svg";
 import axios from "axios";
 import { ToastContainer, toast } from "react-toastify";
+import { RoleProvider } from "../RoleContext";
 
 const Layout = () => {
 	const navigate = useNavigate();
@@ -30,7 +31,9 @@ const Layout = () => {
 	const [newPassword, setnewPassword] = useState("false");
 	const [Token, setToken] = useState("false");
 	const [currentDateTime, setCurrentDateTime] = useState(new Date());
-
+	const [isAdminLoggedIn, setIsAdminLoggedIn] = useState(false);
+	const [staffID, setStaffID] = useState('');
+	const [role, setRole] = useState(''); 
 	const [shoPassword, setShoPassword] = useState(false);
 	const [exitOpen, setexitOpen] = useState(false);
 	const toggle = () => {
@@ -80,6 +83,34 @@ const Layout = () => {
 		}, 1500);
 	};
 
+		const roleID = sessionStorage.getItem('roleID')
+		const nameID = sessionStorage.getItem('nameID')
+		// setIsAdminLoggedIn(true);
+		// setStaffID(staffID); 
+		// setRole('Super administrator'); 
+	  
+	  useEffect(() => {
+		// Check if roleID is set in sessionStorage on component mount
+		const storedRoleID = sessionStorage.getItem('roleID');
+		if (storedRoleID) {
+			setIsAdminLoggedIn(true);
+		  // Set staffID and role based on storedRoleID (example logic)
+		  if (storedRoleID === 'A1') {
+			setStaffID(staffID); // Replace with actual staff ID for super admin
+			setRole('super administartor');
+		  } else if (storedRoleID === 'B2') {
+			setStaffID(staffID); // Replace with actual staff ID for sub admin
+			setRole('sub administrator');
+		  }
+		}
+	  }, []);
+	  let iconText;
+	  if (roleID === "A1") {
+		iconText = "Super administrator";
+	  } else {
+		iconText = "Sub administrator";
+	  }
+	
 	useEffect(() => {
 		// Update the currentDateTime state every second
 		const intervalId = setInterval(() => {
@@ -124,8 +155,8 @@ const Layout = () => {
 								onClick={() => setDropdown(!showDropdown)}
 							>
 								<div className="userinfo">
-									<h4 className="firsthead">John Doe</h4>
-									<p className="firstpara">Administrator</p>
+									<h4 className="firsthead">{nameID}</h4>
+									<p className="firstpara">{iconText}</p>
 								</div>
 								<div className="usericon">
 									<img src={userIcon} alt="" />
@@ -168,7 +199,7 @@ const Layout = () => {
 									</NavLink>
 								))}
 								<div className="borderline">
-									
+
 								</div>
 								<NavLink
 									to={"#"}
