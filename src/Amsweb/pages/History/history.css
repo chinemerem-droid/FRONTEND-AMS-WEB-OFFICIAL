@@ -64,7 +64,7 @@
 
 .table-container-history {
   border: 2px;
-  background: white;
+  background: rgb(131, 2, 2);
   width: 80%;
   margin-left: 5em;
   border-radius: 10px;
@@ -97,7 +97,7 @@
   border-radius: 5px;
   /* box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); */
   width: 100%; /* Adjust the width as needed */
-  max-width: 1100px;
+  
 }
 
 .search-bar {
@@ -191,7 +191,6 @@ td {
   justify-content: space-between;
   align-items: center;
   width: 100%;
-  max-width: 1100px;
   padding: 10px;
   margin: 10px 0;
   border-radius: 5px;

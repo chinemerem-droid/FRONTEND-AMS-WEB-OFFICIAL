@@ -122,20 +122,27 @@ const [searchTerm, setSearchTerm] = useState(""); // Initialize searchTerm state
   // const filteredContacts = contacts.filter((contact) =>
   // 	contact.Name.toLowerCase().includes(searchTerm.toLowerCase())
   //);
+  const [notifications, setNotifications] = useState("");
 
-  const NotificationBar = ({ text, onDelete }) => {
+  const NotificationBar = () => {
     return (
-      <div className="notification-bar">
-        <span>{text}</span>
-        <FaTrash className="delete-icon" onClick={onDelete} />
+      <div className="">
+        {
+          notifications && notifications.map((n, i) => (
+            <div key={i} className="notification-bar">
+              <span>{`You ${n.approvalStatus ? "Approved" : "Declined"} onboarding request of a new user ${n.name}`}</span>
+              <FaTrash className="delete-icon" onClick={() => handleDelete(i)} />
+            </div>
+          ))
+        }
       </div>
     );
   };
 
-  const [notifications, setNotifications] = useState([
-    { id: 1, text: "You approved onboarding request of a new user John Doe" },
-    { id: 2, text: "You denied onboarding request of a new user Jane Smith" },
-  ]);
+  // const [notifications, setNotifications] = useState([
+  //   { id: 1, text: "You approved onboarding request of a new user John Doe" },
+  //   { id: 2, text: "You denied onboarding request of a new user Jane Smith" },
+  // ]);
 
   useEffect(() => {
     axios
@@ -145,7 +152,7 @@ const [searchTerm, setSearchTerm] = useState(""); // Initialize searchTerm state
           id: index,
           text: item.message,
         }));
-        setNotifications(fetchedNotifications);
+        setNotifications(response.data);
       })
       .catch((error) => {
         console.error("There was an error fetching the data!", error);
@@ -275,14 +282,14 @@ const [searchTerm, setSearchTerm] = useState(""); // Initialize searchTerm state
                 </div>
               </div>
               <div className="notification-list">
-                {notifications &&
+                <NotificationBar
+                  // key={i}
+                  // text={n.text}
+                  // onDelete={() => handleDelete(n.id)}
+                />
+                {/* {notifications &&
                   notifications.map((n, i) => (
-                    <NotificationBar
-                      key={i}
-                      text={n.text}
-                      onDelete={() => handleDelete(n.id)}
-                    />
-                  ))}
+                  ))} */}
               </div>
             </>
           )}
