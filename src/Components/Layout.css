@@ -196,6 +196,7 @@ tr:nth-child(even) {
     height: 24px;
     padding: 4px 6px 3px 30px;
     gap: 10px;
+	text-decoration: none;
     color: rgb(164, 12, 12);
     display: flex;
     align-items: center; /* ensure content is vertically centered */
@@ -206,17 +207,20 @@ tr:nth-child(even) {
 .icon2 {
     margin-right: 8px; /* spacing between icon and text */
 }
-
 .link_text {
     display: inline; /* ensure text is inline with icon */
 }
 
 .dateIcon {
-	width: 9%;
-	margin: 0px 4px -7.5px 10px;
+	width: 6%;
+	margin: 1.5px 3px -7px 11px;
+	
 }
 .time-info{
-	width:320px;
+	width:400px;
+	margin-top: 2px;
+	
+
 }
 
 .userDropdown {
