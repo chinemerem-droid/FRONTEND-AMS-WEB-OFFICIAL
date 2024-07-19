@@ -82,8 +82,10 @@ function LoginPage() {
           <img src={LoginIcon} alt="" />
         </div>
         <div className="container1">
+          <div className="Head-text">
           <h1>Welcome</h1>
           <p>AMS Administrator portal</p>
+          </div>
           <div className="inputs">
             <div className="image-div">
               <img src={ContentIcon} alt="" className="iconforlogin" />
@@ -122,9 +124,9 @@ function LoginPage() {
             </div>
           </div>
           <div className="forgot-password">
-            <a href="https://passwordreset-3ghz.onrender.com/" >
+            {/* <a href="https://passwordreset-3ghz.onrender.com/" >
           Forgot Password
-        </a>
+        </a> */}
           </div>
           {loading ? (
             <div className="button-con2">

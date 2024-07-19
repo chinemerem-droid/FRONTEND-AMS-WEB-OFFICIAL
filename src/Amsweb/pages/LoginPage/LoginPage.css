@@ -10,6 +10,7 @@
 .container1 {
 	padding: 100px;
 	width: 50%;
+	margin-top: 60px;
 }
 .container2 {
 	width: 50%;
@@ -38,15 +39,14 @@
 	display: flex;
 	flex-direction: row;
 	border: 1px solid #ccc;
-	width: 100%;
-	margin: 20px 0;
+	width: 90%;
 	padding: 5px 10px;
 	gap: 10px;
 	border-radius: 10px;
 }
 
 .inputs .image-div {
-	width: 14%;
+	width: 10%;
 	border-right: 1px solid #ccc;
 }
 
@@ -70,24 +70,28 @@
 
 .button-con2 button {
 	color: #fff;
-	background: #333;
+	background: #345782;
 	border-radius: 10.99px;
 	font-size: 17.95px;
 	font-weight: 400;
-	cursor: not-allowed;
+	cursor: pointer;
 	border: none;
-	padding: 10px 20px;
-	width: 273px;
-	height: 53px;
+	padding-left:35px;
+	padding-right:30px ;
+	padding-top: 20px;
+	padding-bottom: 40px;
+	margin-left: 150px;
+	height: 50px;
+	width: 150px;
 	display: flex;
 	flex-direction: row;
-	justify-content: center;
-	align-items: center;
-	gap: 5px;
 }
 .button-con2 {
 	margin-top: 20px;
 }
+.button-con2 button .loader { /* Add space between button and loader */
+	margin-left: 20px;
+  }
 
 .button-con button {
 	color: #fff;
@@ -98,19 +102,26 @@
 	cursor: pointer;
 	border: none;
 	padding: 10px 20px;
-	width: 273px;
+	margin-left: 150px;
+	height: 50px;
+	width: 180px;
 }
 .button-con {
 	margin-top: 20px;
 }
 .hiddenPassword {
 	position: absolute;
-	top: 15px;
+	top: 12px;
 	color: #ccc;
+	margin-left: 12px;
 }
 .forgot-password a{
 	text-decoration: none;
 	color: #345782 ;
 	font-size: 15px;
 	line-height: 24.91px;
+}
+.Head-text{
+	margin-left: 2px;
+	margin-top: 18px;
 }

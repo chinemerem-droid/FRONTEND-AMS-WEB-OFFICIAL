@@ -63,11 +63,11 @@ const Layout = () => {
 			name: "History",
 			Icon: <MdOutlineHistory className="nav-icon" />,
 		},
-		{
-			Path: "/reset",
-			name: "Reset Password",
-			Icon: <MdLockReset className="nav-icon" />,
-		},
+		// {
+		// 	Path: "/reset",
+		// 	name: "Reset Password",
+		// 	Icon: <MdLockReset className="nav-icon" />,
+		// },
 	];
 	const handlePasswordmodal = () => {
 		setDropdown(false);
