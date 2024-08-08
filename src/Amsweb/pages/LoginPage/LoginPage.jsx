@@ -123,21 +123,17 @@ function LoginPage() {
               )}
             </div>
           </div>
-          <div className="forgot-password">
-            {/* <a href="https://passwordreset-3ghz.onrender.com/" >
-          Forgot Password
-        </a> */}
-          </div>
           {loading ? (
             <div className="button-con2">
-              <button disabled>
-                Login <Loader />
+              <button>
+              <span className="text-loader">Login <Loader/></span>
               </button>
             </div>
           ) : (
-            <div className="button-con">
-              <button onClick={submitCredentials}>Login</button>
+            <div className="button-con2">
+              <button onClick={submitCredentials}><span className="text-loader">Login</span></button>
             </div>
+            
           )}
          
         </div>

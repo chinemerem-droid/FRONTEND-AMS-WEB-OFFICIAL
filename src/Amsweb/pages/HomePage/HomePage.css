@@ -12,7 +12,11 @@
 	width: 98%;
 	margin-left: 5px;
 }
-
+.CheckIn{
+	position: relative;
+    right: -170%;
+    top: 200px;
+}
 #search-icon {
 	display: flex;
 	margin-top: 7px;

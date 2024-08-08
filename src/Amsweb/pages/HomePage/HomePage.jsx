@@ -8,7 +8,7 @@ const HomePage = () => {
 	const [contacts, setContacts] = useState([]);
 	const [searchTerm, setSearchTerm] = useState("");
 
-	useEffect(() => {
+	const fetchContacts = () => {
 		const currentDate = new Date().toISOString().split("T")[0];
 		const apiUrl =
 			"https://attsystem-latest.onrender.com/api/Attendance/AttendanceByDate";
@@ -37,6 +37,17 @@ const HomePage = () => {
 				setContacts(formattedData);
 			})
 			.catch((error) => console.error("Error fetching data: ", error));
+	};
+
+	useEffect(() => {
+		// Fetch data initially
+		fetchContacts();
+
+		// Set interval to fetch data every 10 seconds
+		const intervalId = setInterval(fetchContacts, 10000);
+
+		// Clear interval on component unmount
+		return () => clearInterval(intervalId);
 	}, []);
 
 	const handleSearchChange = (e) => {
@@ -76,7 +87,6 @@ const HomePage = () => {
 						filteredContacts.map((contact, index) => (
 							<tr key={index}>
 								<td className="cells-icon">
-									{" "}
 									<FaUser className="user-icon" />
 								</td>
 								<td className="cells-Name">{contact.Name}</td>
@@ -89,8 +99,8 @@ const HomePage = () => {
 					) : (
 						<div className="CheckIn">
 							<img src={CheckIn} alt="" className="Check" />
-							<h2 className="name"> No Check ins </h2>
-							<p> No one has checked in yet today</p>
+							<h2 className="name">No Check-ins</h2>
+							<p>No one has checked in yet today</p>
 						</div>
 					)}
 				</tbody>

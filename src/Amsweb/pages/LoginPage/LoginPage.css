@@ -17,11 +17,11 @@
 	background-color: #e3effd;
 }
 .container2 img {
-	min-width: 70%;
+	/* min-width: 70%;
 	max-width: 50%;
-	width: 70%;
-	margin: 180px auto;
-	padding-left: 25%;
+	width: 70%; */
+	margin: 70px auto;
+	padding-left: 5%;
 
 	background-color: #e3effd;
 }
@@ -80,9 +80,9 @@
 	padding-right:30px ;
 	padding-top: 20px;
 	padding-bottom: 40px;
-	margin-left: 150px;
+	/* margin-left: 150px;  */
 	height: 50px;
-	width: 150px;
+	width: 400px;
 	display: flex;
 	flex-direction: row;
 }
@@ -91,6 +91,10 @@
 }
 .button-con2 button .loader { /* Add space between button and loader */
 	margin-left: 20px;
+  }
+  .text-loader{
+	display: flex;
+	margin-left: 150px;
   }
 
 .button-con button {
@@ -102,9 +106,9 @@
 	cursor: pointer;
 	border: none;
 	padding: 10px 20px;
-	margin-left: 150px;
+	/* margin-left: 150px; */
 	height: 50px;
-	width: 180px;
+	width: 400px;
 }
 .button-con {
 	margin-top: 20px;
