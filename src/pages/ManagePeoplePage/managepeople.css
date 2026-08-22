@@ -1,0 +1,17 @@
+.mp-controls {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--sp-4);
+  margin-bottom: var(--sp-5);
+  flex-wrap: wrap;
+}
+.mp-card {
+  overflow: hidden;
+}
+
+@media (max-width: 720px) {
+  .mp-card {
+    overflow-x: auto;
+  }
+}
