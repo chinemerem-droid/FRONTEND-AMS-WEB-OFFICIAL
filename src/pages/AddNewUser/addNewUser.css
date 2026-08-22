@@ -1,0 +1,67 @@
+.anu-card {
+  padding: var(--sp-6);
+  max-width: 720px;
+}
+.anu-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: var(--sp-4);
+  margin-bottom: var(--sp-4);
+}
+.anu-field {
+  margin-bottom: var(--sp-4);
+}
+.anu-field label {
+  display: block;
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--ink-soft);
+  margin-bottom: var(--sp-2);
+}
+.anu-roles {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: var(--sp-3);
+}
+.role-chip {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  text-align: left;
+  padding: var(--sp-4);
+  border: 1px solid var(--line-strong);
+  border-radius: var(--radius);
+  background: var(--surface);
+  cursor: pointer;
+  transition: border-color 0.15s ease, background 0.15s ease, box-shadow 0.15s ease;
+}
+.role-chip:hover {
+  border-color: var(--brand);
+}
+.role-chip.is-active {
+  border-color: var(--brand);
+  background: var(--brand-tint);
+  box-shadow: 0 0 0 3px var(--brand-tint);
+}
+.role-chip__label {
+  font-family: var(--font-display);
+  font-weight: 600;
+  font-size: 14px;
+  color: var(--ink);
+}
+.role-chip__hint {
+  font-size: 12px;
+  color: var(--ink-faint);
+}
+.anu-submit {
+  margin-top: var(--sp-3);
+  height: 46px;
+  padding-inline: var(--sp-6);
+}
+
+@media (max-width: 640px) {
+  .anu-grid,
+  .anu-roles {
+    grid-template-columns: 1fr;
+  }
+}

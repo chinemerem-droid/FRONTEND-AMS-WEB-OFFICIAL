@@ -1,0 +1,70 @@
+.reset {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: var(--sp-5);
+  background: var(--bg);
+}
+.reset__card {
+  width: 100%;
+  max-width: 420px;
+  background: var(--surface);
+  border: 1px solid var(--line);
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-md);
+  padding: var(--sp-7) var(--sp-6);
+}
+.reset__logo {
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-size: 20px;
+  color: var(--brand);
+  letter-spacing: 0.04em;
+}
+.reset__title {
+  font-size: 24px;
+  font-weight: 600;
+  margin-top: var(--sp-5);
+}
+.reset__lead {
+  color: var(--ink-faint);
+  font-size: 14px;
+  margin-top: 6px;
+  line-height: 1.5;
+}
+.reset__form {
+  margin-top: var(--sp-6);
+}
+.reset__label {
+  display: block;
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--ink-soft);
+  margin: var(--sp-4) 0 var(--sp-2);
+}
+.reset__submit {
+  margin-top: var(--sp-5);
+  height: 46px;
+}
+.reset__msg {
+  margin-top: var(--sp-4);
+  font-size: 13.5px;
+  text-align: center;
+  color: var(--ink-soft);
+}
+.reset__back {
+  background: none;
+  border: none;
+  color: var(--brand);
+  font-size: 13px;
+  font-weight: 600;
+  cursor: pointer;
+  margin-top: var(--sp-5);
+  display: block;
+  width: 100%;
+  text-align: center;
+}
+.reset__back:hover {
+  text-decoration: underline;
+}

@@ -1,0 +1,94 @@
+.hist-controls {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--sp-4);
+  margin-bottom: var(--sp-5);
+  flex-wrap: wrap;
+}
+.hist-filters {
+  display: flex;
+  align-items: center;
+  gap: var(--sp-3);
+  flex-wrap: wrap;
+}
+.hist-range {
+  font-family: var(--font-body);
+  font-size: 14px;
+  color: var(--ink);
+  background: var(--surface);
+  border: 1px solid var(--line-strong);
+  border-radius: var(--radius-sm);
+  padding: 10px 14px;
+  cursor: pointer;
+}
+.hist-range:focus-visible {
+  outline: 2px solid var(--brand);
+  outline-offset: 1px;
+}
+.hist-card {
+  overflow: hidden;
+}
+
+/* Approval history */
+.approval-list {
+  display: flex;
+  flex-direction: column;
+}
+.approval-row {
+  display: flex;
+  align-items: center;
+  gap: var(--sp-3);
+  padding: var(--sp-4) var(--sp-5);
+  border-bottom: 1px solid var(--line);
+}
+.approval-row:last-child {
+  border-bottom: none;
+}
+.approval-icon {
+  font-size: 20px;
+  display: flex;
+  flex-shrink: 0;
+}
+.approval-icon--yes {
+  color: var(--present);
+}
+.approval-icon--no {
+  color: var(--danger);
+}
+.approval-text {
+  flex: 1;
+}
+.approval-text p {
+  font-size: 14.5px;
+  color: var(--ink-soft);
+}
+.approval-text strong {
+  color: var(--ink);
+  font-weight: 600;
+}
+.approval-date {
+  font-size: 12.5px;
+  color: var(--ink-faint);
+}
+.approval-delete {
+  background: transparent;
+  border: none;
+  color: var(--ink-faint);
+  cursor: pointer;
+  font-size: 17px;
+  padding: 8px;
+  border-radius: var(--radius-sm);
+  display: flex;
+  transition: background 0.15s ease, color 0.15s ease;
+}
+.approval-delete:hover {
+  background: var(--danger-tint);
+  color: var(--danger);
+}
+
+@media (max-width: 720px) {
+  .hist-card {
+    overflow-x: auto;
+  }
+}
